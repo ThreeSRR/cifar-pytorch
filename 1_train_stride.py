@@ -2,6 +2,7 @@
 import argparse
 import logging
 import time
+import json
 
 import torch
 import torch.backends.cudnn as cudnn
@@ -11,7 +12,7 @@ import yaml
 from easydict import EasyDict
 from torch.utils.tensorboard import SummaryWriter
 
-from models import get_model, get_model_kernel_size
+from models import get_model, get_model_kernel_size, get_model_stride
 from utils import (
     Logger,
     adjust_learning_rate,
@@ -115,7 +116,7 @@ def train(train_loader, net, criterion, optimizer, epoch, device):
 
 
 def test(test_loader, net, criterion, optimizer, epoch, device):
-    global best_prec, writer
+    global best_prec, writer, best_epoch
 
     net.eval()
 
@@ -157,11 +158,18 @@ def test(test_loader, net, criterion, optimizer, epoch, device):
     save_checkpoint(state, is_best, args.work_path + "/" + config.ckpt_name)
     if is_best:
         best_prec = acc
+        best_epoch = epoch
+
+    return test_loss, test_acc
+    
 
 
 def main():
-    global args, config, last_epoch, best_prec, writer
+    global args, config, last_epoch, best_prec, writer, best_epoch
     writer = SummaryWriter(log_dir=args.work_path + "/event")
+
+    log = {'train': {}, 'test': {}}
+
 
     # read config from yaml file
     with open(args.work_path + "/config.yaml") as f:
@@ -171,7 +179,7 @@ def main():
     logger.info(config)
 
     # define netowrk
-    net = get_model_kernel_size(config)
+    net = get_model_stride(config)
     logger.info(net)
     logger.info(" == total parameters: " + str(count_parameters(net)))
 
@@ -207,6 +215,7 @@ def main():
     # resume from a checkpoint
     last_epoch = -1
     best_prec = 0
+    best_epoch = 0
     if args.work_path:
         ckpt_file_name = args.work_path + "/" + config.ckpt_name + ".pth.tar"
         if args.resume:
@@ -225,19 +234,28 @@ def main():
     for epoch in range(last_epoch + 1, config.epochs):
         lr = adjust_learning_rate(optimizer, epoch, config)
         writer.add_scalar("learning_rate", lr, epoch)
-        train(train_loader, net, criterion, optimizer, epoch, device)
+        train_loss, train_acc = train(train_loader, net, criterion, optimizer, epoch, device)
+        log['train'][epoch] = {'loss': train_loss, 'acc': train_acc}
         if (
             epoch == 0
             or (epoch + 1) % config.eval_freq == 0
             or epoch == config.epochs - 1
         ):
-            test(test_loader, net, criterion, optimizer, epoch, device)
+            test_loss, test_acc = test(test_loader, net, criterion, optimizer, epoch, device)
+            log['test'][epoch] = {'loss': test_loss, 'acc': test_acc}
+
+    log['best'] = {'best_epoch': best_epoch, 'best_acc': best_prec}
+
     writer.close()
     logger.info(
         "======== Training Finished.   best_test_acc: {:.3f}% ========".format(
             best_prec
         )
     )
+
+    ### save log as json file
+    with open(args.work_path + "/log.json", 'w') as f:
+        json.dump(log, f, indent=4)
 
 
 if __name__ == "__main__":
