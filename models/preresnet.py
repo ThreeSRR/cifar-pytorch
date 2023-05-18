@@ -164,25 +164,25 @@ class PreResNet(nn.Module):
         return x
 
 
-def preresnet20(num_classes):
+def preresnet20(num_classes, **kwargs):
     return PreResNet(depth=20, num_classes=num_classes)
 
 
-def preresnet32(num_classes):
+def preresnet32(num_classes, **kwargs):
     return PreResNet(depth=32, num_classes=num_classes)
 
 
-def preresnet44(num_classes):
+def preresnet44(num_classes, **kwargs):
     return PreResNet(depth=44, num_classes=num_classes)
 
 
-def preresnet56(num_classes):
+def preresnet56(num_classes, **kwargs):
     return PreResNet(depth=56, num_classes=num_classes)
 
 
-def preresnet110(num_classes):
+def preresnet110(num_classes, **kwargs):
     return PreResNet(depth=110, num_classes=num_classes)
 
 
-def preresnet1202(num_classes):
+def preresnet1202(num_classes, **kwargs):
     return PreResNet(depth=1202, num_classes=num_classes)

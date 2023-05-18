@@ -29,11 +29,15 @@ parser = argparse.ArgumentParser(description="PyTorch CIFAR Dataset Training")
 parser.add_argument("--work_path", required=True, type=str)
 parser.add_argument("--resume", action="store_true", help="resume from checkpoint")
 
+
 args = parser.parse_args()
+dataset_name = args.work_path.split("/")[2]
+
+
 logger = Logger(
     log_file_name=args.work_path + "/log.txt",
     log_level=logging.DEBUG,
-    logger_name="CIFAR",
+    logger_name=dataset_name.upper(),
 ).get_log()
 config = None
 

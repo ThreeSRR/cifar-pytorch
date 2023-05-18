@@ -145,9 +145,9 @@ class ResNeXt(nn.Module):
         return self.fc(x)
 
 
-def resnext29_8x64d(num_classes):
+def resnext29_8x64d(num_classes, **kwargs):
     return ResNeXt(cardinality=8, depth=29, num_classes=num_classes, base_width=64)
 
 
-def resnext29_16x64d(num_classes):
+def resnext29_16x64d(num_classes, **kwargs):
     return ResNeXt(cardinality=16, depth=29, num_classes=num_classes, base_width=64)

@@ -88,9 +88,9 @@ class DenseNet(nn.Module):
         return out
 
 
-def densenet100bc(num_classes):
+def densenet100bc(num_classes, **kwargs):
     return DenseNet(Bottleneck, depth=100, growth_rate=12, num_classes=num_classes)
 
 
-def densenet190bc(num_classes):
+def densenet190bc(num_classes, **kwargs):
     return DenseNet(Bottleneck, depth=190, growth_rate=40, num_classes=num_classes)

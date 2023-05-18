@@ -203,9 +203,9 @@ class SkResNeXt(nn.Module):
         return self.fc(x)
 
 
-def sk_resnext29_16x32d(num_classes):
+def sk_resnext29_16x32d(num_classes, **kwargs):
     return SkResNeXt(cardinality=16, depth=29, num_classes=num_classes, base_width=32)
 
 
-def sk_resnext29_16x64d(num_classes):
+def sk_resnext29_16x64d(num_classes, **kwargs):
     return SkResNeXt(cardinality=16, depth=29, num_classes=num_classes, base_width=64)

@@ -6,7 +6,7 @@
 - [x] AlexNet代码修改,加入调整kernel size, stride, padding的接口
 - [ ] VGG代码修改,加入调整kernel size, stride, padding的接口
 - [ ] loss曲线绘制,json保存训练/预测结果,便于最终整理
-- [ ] MNIST数据集
+- [x] MNIST数据集(目前只对lenet进行修改,适应28/32的输入)
 - [ ] TBD
  
 
@@ -39,20 +39,21 @@
 simply run the cmd for the training:
 
 ```bash
-## 1 GPU for lenet
-CUDA_VISIBLE_DEVICES=0 python -u train.py --work-path ./experiments/cifar10/lenet
+### Experiment 1: kernel size experiments
+## 5-5-3-3-3
+CUDA_VISIBLE_DEVICES=0 python -u 0_train_kernel_size.py --work_path ./experiments/cifar10/0_kernel_size/alexnet/5-5-3-3-3
+## 7-5-3-3-3
+CUDA_VISIBLE_DEVICES=0 python -u 0_train_kernel_size.py --work_path ./experiments/cifar10/0_kernel_size/alexnet/7-5-3-3-3
+## 11-5-3-3-3
+CUDA_VISIBLE_DEVICES=0 python -u 0_train_kernel_size.py --work_path ./experiments/cifar10/0_kernel_size/alexnet/11-5-3-3-3
 
-## resume from ckpt
-CUDA_VISIBLE_DEVICES=0 python -u train.py --work-path ./experiments/cifar10/lenet --resume
+### Experiment 2: stride experiments
+## 2-1-1-1-1
+CUDA_VISIBLE_DEVICES=0 python -u 1_train_stride.py --work_path ./experiments/cifar10/1_stride/alexnet/2-1-1-1-1
 
-## 2 GPUs for resnet1202
-CUDA_VISIBLE_DEVICES=0,1 python -u train.py --work-path ./experiments/cifar10/preresnet1202
 
-## 4 GPUs for densenet190bc
-CUDA_VISIBLE_DEVICES=0,1,2,3 python -u train.py --work-path ./experiments/cifar10/densenet190bc
+### Experiment 3: padding experiments
 
-## 1 GPU for vgg19 inference
-CUDA_VISIBLE_DEVICES=0 python -u eval.py --work-path ./experiments/cifar10/vgg19
 ``` 
 
 

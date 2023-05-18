@@ -156,9 +156,9 @@ class SeResNeXt(nn.Module):
         return self.fc(x)
 
 
-def se_resnext29_8x64d(num_classes):
+def se_resnext29_8x64d(num_classes, **kwargs):
     return SeResNeXt(cardinality=8, depth=29, num_classes=num_classes, base_width=64)
 
 
-def se_resnext29_16x64d(num_classes):
+def se_resnext29_16x64d(num_classes, **kwargs):
     return SeResNeXt(cardinality=16, depth=29, num_classes=num_classes, base_width=64)

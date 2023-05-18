@@ -31,7 +31,7 @@ class AlexNet(nn.Module):
         return x
 
 
-def alexnet(num_classes, kernel_sizes=[11, 5, 3, 3, 3], strides=[4, 1, 1, 1, 1], paddings=[5, 2, 1, 1, 1]):
+def alexnet(num_classes, kernel_sizes=[11, 5, 3, 3, 3], strides=[4, 1, 1, 1, 1], paddings=[5, 2, 1, 1, 1], **kwargs):
     assert len(kernel_sizes) == 5 and len(strides) == 5 and len(paddings) == 5, \
         "kernel_sizes must be a list of 5 elements"
     return AlexNet(kernel_sizes=kernel_sizes, strides=strides, paddings=paddings, num_classes=num_classes)

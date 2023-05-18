@@ -159,25 +159,25 @@ class ResNet(nn.Module):
         return x
 
 
-def resnet20(num_classes):
+def resnet20(num_classes, **kwargs):
     return ResNet(depth=20, num_classes=num_classes)
 
 
-def resnet32(num_classes):
+def resnet32(num_classes, **kwargs):
     return ResNet(depth=32, num_classes=num_classes)
 
 
-def resnet44(num_classes):
+def resnet44(num_classes, **kwargs):
     return ResNet(depth=44, num_classes=num_classes)
 
 
-def resnet56(num_classes):
+def resnet56(num_classes, **kwargs):
     return ResNet(depth=56, num_classes=num_classes)
 
 
-def resnet110(num_classes):
+def resnet110(num_classes, **kwargs):
     return ResNet(depth=110, num_classes=num_classes)
 
 
-def resnet1202(num_classes):
+def resnet1202(num_classes, **kwargs):
     return ResNet(depth=1202, num_classes=num_classes)
