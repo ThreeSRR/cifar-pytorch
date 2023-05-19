@@ -4,7 +4,7 @@
 ### TODO:
 
 - [x] AlexNet代码修改,加入调整kernel size, stride, padding的接口
-- [ ] VGG代码修改,加入调整kernel size, stride, padding的接口
+- [x] VGG代码修改,加入调整kernel size, stride, padding的接口
 - [x] loss曲线绘制,json保存训练/预测结果,便于最终整理
 - [x] MNIST数据集(目前只对lenet进行修改,适应28/32的输入)
 - [ ] 别的模型适应28的输入进行修改(至少实现AlexNet和VGG)
