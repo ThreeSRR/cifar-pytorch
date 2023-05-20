@@ -8,7 +8,8 @@
 - [x] loss曲线绘制,json保存训练/预测结果,便于最终整理
 - [x] MNIST数据集(目前只对lenet进行修改,适应28/32的输入)
 - [ ] 别的模型适应28的输入进行修改(至少实现AlexNet和VGG)
-- [ ] 考虑一下AlexNet卷积核大小的设定
+- [x] AlexNet卷积核大小与对应padding的设定
+- [ ] AlexNet步幅stride设定
 - [ ] TBD
  
 
