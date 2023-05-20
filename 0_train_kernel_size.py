@@ -180,8 +180,9 @@ def main():
 
     # define netowrk
     net = get_model_kernel_size(config)
+    params = count_parameters(net)
     logger.info(net)
-    logger.info(" == total parameters: " + str(count_parameters(net)))
+    logger.info(" == total parameters: " + str(params))
 
     # CPU or GPU
     device = "cuda" if config.use_gpu else "cpu"
@@ -244,7 +245,7 @@ def main():
             test_loss, test_acc = test(test_loader, net, criterion, optimizer, epoch, device)
             log['test'][epoch] = {'loss': test_loss, 'acc': test_acc}
 
-    log['best'] = {'best_epoch': best_epoch, 'best_acc': best_prec}
+    log['info'] = {'best_epoch': best_epoch, 'best_acc': best_prec, 'n_params': params}
 
     writer.close()
     logger.info(

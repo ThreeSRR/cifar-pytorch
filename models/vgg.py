@@ -4,51 +4,15 @@ import torch.nn as nn
 __all__ = ["vgg11", "vgg13", "vgg16", "vgg19"]
 
 cfg = {
-    "A": [64, "M", 128, "M", 256, 256, "M", 512, 512, "M", 512, 512, "M"],
-    "B": [64, 64, "M", 128, 128, "M", 256, 256, "M", 512, 512, "M", 512, 512, "M"],
-    "D": [
-        64,
-        64,
-        "M",
-        128,
-        128,
-        "M",
-        256,
-        256,
-        256,
-        "M",
-        512,
-        512,
-        512,
-        "M",
-        512,
-        512,
-        512,
-        "M",
-    ],
-    "E": [
-        64,
-        64,
-        "M",
-        128,
-        128,
-        "M",
-        256,
-        256,
-        256,
-        256,
-        "M",
-        512,
-        512,
-        512,
-        512,
-        "M",
-        512,
-        512,
-        512,
-        512,
-        "M",
-    ],
+  "A": [[64, 3, 1, 1], "M", [128, 3, 1, 1], "M", [256, 3, 1, 1], [256, 3, 1, 1], "M", [512, 3, 1, 1], [512, 3, 1, 1], "M", [512, 3, 1, 1], [512, 3, 1, 1], "M"],
+  "B": [[64, 3, 1, 1], [64, 3, 1, 1], "M", [128, 3, 1, 1], [128, 3, 1, 1], "M", [256, 3, 1, 1], [256, 3, 1, 1], "M", [512, 3, 1, 1], [512, 3, 1, 1], "M", [512, 3, 1, 1], [512, 3, 1, 1], "M"],
+  
+  "D": [[64, 5, 1, 2], [64, 5, 1, 2], "M", 
+        [128, 5, 1, 2], [128, 5, 1, 2], "M", 
+        [256, 3, 1, 1], [256, 3, 1, 1], [256, 3, 1, 1], "M", 
+        [512, 3, 1, 1], [512, 3, 1, 1], [512, 3, 1, 1], "M", 
+        [512, 3, 1, 1], [512, 3, 1, 1], [512, 3, 1, 1], "M"],
+  "E": [[64, 3, 1, 1], [64, 3, 1, 1], "M", [128, 3, 1, 1], [128, 3, 1, 1], "M", [256, 3, 1, 1], [256, 3, 1, 1], [256, 3, 1, 1], [256, 3, 1, 1], "M", [512, 3, 1, 1], [512, 3, 1, 1], [512, 3, 1, 1], [512, 3, 1, 1], "M", [512, 3, 1, 1], [512, 3, 1, 1], [512, 3, 1, 1], [512, 3, 1, 1], "M"]
 }
 
 
@@ -56,7 +20,7 @@ class VGG(nn.Module):
     def __init__(self, features, num_classes=10):
         super(VGG, self).__init__()
         self.features = features
-        self.classifier = nn.Linear(512, num_classes)
+        self.classifier = nn.Linear([512, 3, 1, 1], num_classes)
         self._initialize_weights()
 
     def forward(self, x):
@@ -86,12 +50,12 @@ def make_layers(cfg, batch_norm=False):
         if v == "M":
             layers += [nn.MaxPool2d(kernel_size=2, stride=2)]
         else:
-            conv2d = nn.Conv2d(in_channels, v, kernel_size=3, padding=1)
+            conv2d = nn.Conv2d(in_channels, v[0], kernel_size=v[1], stride=v[2], padding=v[3])
             if batch_norm:
-                layers += [conv2d, nn.BatchNorm2d(v), nn.ReLU(inplace=True)]
+                layers += [conv2d, nn.BatchNorm2d(v[0]), nn.ReLU(inplace=True)]
             else:
                 layers += [conv2d, nn.ReLU(inplace=True)]
-            in_channels = v
+            in_channels = v[0]
     return nn.Sequential(*layers)
 
 
