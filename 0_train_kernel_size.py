@@ -3,7 +3,7 @@ import argparse
 import logging
 import time
 import json
-
+import os
 import torch
 import torch.backends.cudnn as cudnn
 import torch.nn as nn
@@ -25,7 +25,7 @@ from utils import (
     mixup_data,
     save_checkpoint,
 )
-
+os.environ['CUDA_VISIBLE_DEVICE'] = '0'
 parser = argparse.ArgumentParser(description="PyTorch CIFAR Dataset Training")
 parser.add_argument("--work_path", required=True, type=str)
 parser.add_argument("--resume", action="store_true", help="resume from checkpoint")
@@ -172,8 +172,8 @@ def main():
 
 
     # read config from yaml file
-    with open(args.work_path + "/config.yaml") as f:
-        config = yaml.load(f)
+    with open(args.work_path + "\config.yaml") as f:
+        config = yaml.load(f, Loader=yaml.SafeLoader)
     # convert to dict
     config = EasyDict(config)
     logger.info(config)
