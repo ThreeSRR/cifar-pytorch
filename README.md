@@ -9,7 +9,8 @@
 - [x] MNIST数据集(目前只对lenet进行修改,适应28/32的输入)
 - [ ] 别的模型适应28的输入进行修改(至少实现AlexNet和VGG)
 - [x] AlexNet卷积核大小与对应padding的设定
-- [ ] AlexNet步幅stride设定
+- [x] AlexNet特征图大小实验设定
+- [ ] 实验结果整理 [`腾讯文档`](https://docs.qq.com/sheet/DYmV0Z0F2aWtnRXln?tab=BB08J2)
 - [ ] TBD
  
 
@@ -29,9 +30,6 @@ CUDA_VISIBLE_DEVICES=0 python -u 0_train_kernel_size.py --work_path ./experiment
 ### Experiment 2: stride experiments
 ## 2-1-1-1-1
 CUDA_VISIBLE_DEVICES=0 python -u 1_train_stride.py --work_path ./experiments/cifar10/1_stride/alexnet/2-1-1-1-1
-
-
-### Experiment 3: padding experiments
 
 ``` 
 

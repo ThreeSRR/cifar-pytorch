@@ -166,13 +166,13 @@ def test(test_loader, net, criterion, optimizer, epoch, device):
 
 def main():
     global args, config, last_epoch, best_prec, writer, best_epoch
-    writer = SummaryWriter(log_dir=args.work_path + "/event")
+    writer = SummaryWriter(log_dir=os.path.join(args.work_path, "event"))
 
     log = {'train': {}, 'test': {}}
 
 
     # read config from yaml file
-    with open(args.work_path + "\config.yaml") as f:
+    with open(os.path.join(args.work_path, "config.yaml")) as f:
         config = yaml.load(f, Loader=yaml.SafeLoader)
     # convert to dict
     config = EasyDict(config)

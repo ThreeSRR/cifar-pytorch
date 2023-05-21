@@ -61,8 +61,14 @@ def alexnet(num_classes, **kwargs):
         kernel_sizes = cfg['kernel_sizes']
         paddings = cfg['paddings']
     else:
-        pass
-        # TODO: stride and padding settings
+        feature_size_setting = kwargs['feature_size']
+        print('change feature_size, using default kernel_sizes')
+        kernel_sizes = [11, 5, 3, 3, 3]
+
+        cfg = feature_size_config(feature_size_setting)
+        strides = cfg['strides']
+        paddings = cfg['paddings']
+        
     
     print('kernel_sizes:', kernel_sizes, 'strides:', strides, 'paddings:', paddings)
     return AlexNet(kernel_sizes=kernel_sizes, strides=strides, paddings=paddings, num_classes=num_classes)
@@ -137,3 +143,39 @@ def kernel_size_config(kernel_sizes_setting):
     }
 
     return cfg[kernel_sizes_setting]
+
+
+def feature_size_config(feature_size_setting):
+
+    cfg = {
+        '4-2-2-2-1': {
+            'strides': [4, 1, 1, 1, 1],
+            'paddings': [5, 2, 1, 1, 1]
+        },
+        '8-4-2-2-1': {
+            'strides': [2, 1, 1, 1, 1],
+            'paddings': [5, 2, 0, 1, 1]
+        },
+        '8-4-4-2-1': {
+            'strides': [2, 1, 1, 1, 1],
+            'paddings': [5, 2, 1, 0, 1]
+        },
+        '8-4-4-4-1': {
+            'strides': [2, 1, 1, 1, 1],
+            'paddings': [5, 2, 1, 1, 0]
+        },
+        '16-8-4-4-1': {
+            'strides': [1, 1, 2, 1, 1],
+            'paddings': [5, 2, 1, 1, 0]
+        },
+        '16-8-8-4-1': {
+            'strides': [1, 1, 1, 2, 1],
+            'paddings': [5, 2, 1, 1, 0]
+        },
+        '16-8-4-2-1': {
+            'strides': [1, 1, 2, 1, 1],
+            'paddings': [5, 2, 1, 0, 1]
+        }
+    }
+
+    return cfg[feature_size_setting]
