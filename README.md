@@ -10,6 +10,7 @@
 - [ ] 别的模型适应28的输入进行修改(至少实现AlexNet和VGG)
 - [x] AlexNet卷积核大小与对应padding的设定
 - [x] AlexNet特征图大小实验设定
+- [x] loss曲线绘制
 - [ ] 实验结果整理 [`腾讯文档`](https://docs.qq.com/sheet/DYmV0Z0F2aWtnRXln?tab=BB08J2)
 - [ ] TBD
  

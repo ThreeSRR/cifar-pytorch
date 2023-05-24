@@ -1,0 +1,1083 @@
+{'architecture': 'alexnet', 'data_path': './data', 'ckpt_path': './', 'ckpt_name': 'alexnet', 'num_classes': 10, 'dataset': 'cifar10', 'kernel_size': '3-3-3-3-5', 'use_gpu': True, 'input_size': 32, 'epochs': 150, 'batch_size': 128, 'test_batch': 200, 'eval_freq': 2, 'workers': 4, 'optimize': {'momentum': 0.9, 'weight_decay': 0.0001, 'nesterov': True}, 'mixup': False, 'mixup_alpha': 0.4, 'augmentation': {'normalize': True, 'random_crop': True, 'random_horizontal_filp': True, 'cutout': False, 'holes': 1, 'length': 8}, 'lr_scheduler': {'type': 'STEP', 'base_lr': 0.001, 'lr_epochs': [100, 150, 200], 'lr_mults': 0.1, 'min_lr': 0.0, 'lower_bound': -6.0, 'upper_bound': 3.0}}
+AlexNet(
+  (layer_1): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(4, 4), padding=(1, 1))
+    (1): ReLU(inplace=True)
+    (2): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  )
+  (layer_2): Sequential(
+    (0): Conv2d(64, 192, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU(inplace=True)
+    (2): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  )
+  (layer_3): Sequential(
+    (0): Conv2d(192, 384, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU(inplace=True)
+  )
+  (layer_4): Sequential(
+    (0): Conv2d(384, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU(inplace=True)
+  )
+  (layer_5): Sequential(
+    (0): Conv2d(256, 256, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2))
+    (1): ReLU(inplace=True)
+    (2): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  )
+  (fc): Linear(in_features=256, out_features=10, bias=True)
+)
+ == total parameters: 3302730
+            =======  Training  =======
+
+ === Epoch: [1/150] === 
+   == step: [100/391], train loss: 2.047 | train acc: 21.109% | lr: 0.001000
+   == step: [200/391], train loss: 1.917 | train acc: 26.750% | lr: 0.001000
+   == step: [300/391], train loss: 1.834 | train acc: 30.148% | lr: 0.001000
+   == step: [391/391], train loss: 1.777 | train acc: 32.548% | lr: 0.001000
+   == cost time: 5.0210s
+ === Validate ===
+   == test loss: 1.497 | test acc: 44.690%
+ === Epoch: [2/150] === 
+   == step: [100/391], train loss: 1.549 | train acc: 43.289% | lr: 0.001000
+   == step: [200/391], train loss: 1.522 | train acc: 44.156% | lr: 0.001000
+   == step: [300/391], train loss: 1.502 | train acc: 45.122% | lr: 0.001000
+   == step: [391/391], train loss: 1.490 | train acc: 45.626% | lr: 0.001000
+   == cost time: 4.9469s
+ === Validate ===
+   == test loss: 1.340 | test acc: 50.960%
+ === Epoch: [3/150] === 
+   == step: [100/391], train loss: 1.397 | train acc: 49.367% | lr: 0.001000
+   == step: [200/391], train loss: 1.395 | train acc: 49.758% | lr: 0.001000
+   == step: [300/391], train loss: 1.385 | train acc: 49.977% | lr: 0.001000
+   == step: [391/391], train loss: 1.376 | train acc: 50.280% | lr: 0.001000
+   == cost time: 4.9105s
+ === Epoch: [4/150] === 
+   == step: [100/391], train loss: 1.318 | train acc: 52.359% | lr: 0.001000
+   == step: [200/391], train loss: 1.302 | train acc: 53.012% | lr: 0.001000
+   == step: [300/391], train loss: 1.303 | train acc: 52.987% | lr: 0.001000
+   == step: [391/391], train loss: 1.299 | train acc: 53.052% | lr: 0.001000
+   == cost time: 4.8849s
+ === Validate ===
+   == test loss: 1.210 | test acc: 56.680%
+ === Epoch: [5/150] === 
+   == step: [100/391], train loss: 1.258 | train acc: 55.047% | lr: 0.001000
+   == step: [200/391], train loss: 1.260 | train acc: 55.012% | lr: 0.001000
+   == step: [300/391], train loss: 1.253 | train acc: 55.143% | lr: 0.001000
+   == step: [391/391], train loss: 1.252 | train acc: 55.206% | lr: 0.001000
+   == cost time: 4.8493s
+ === Epoch: [6/150] === 
+   == step: [100/391], train loss: 1.215 | train acc: 56.453% | lr: 0.001000
+   == step: [200/391], train loss: 1.213 | train acc: 56.285% | lr: 0.001000
+   == step: [300/391], train loss: 1.210 | train acc: 56.281% | lr: 0.001000
+   == step: [391/391], train loss: 1.205 | train acc: 56.618% | lr: 0.001000
+   == cost time: 4.9887s
+ === Validate ===
+   == test loss: 1.123 | test acc: 59.360%
+ === Epoch: [7/150] === 
+   == step: [100/391], train loss: 1.166 | train acc: 58.227% | lr: 0.001000
+   == step: [200/391], train loss: 1.160 | train acc: 58.484% | lr: 0.001000
+   == step: [300/391], train loss: 1.160 | train acc: 58.417% | lr: 0.001000
+   == step: [391/391], train loss: 1.165 | train acc: 58.166% | lr: 0.001000
+   == cost time: 4.9692s
+ === Epoch: [8/150] === 
+   == step: [100/391], train loss: 1.150 | train acc: 58.672% | lr: 0.001000
+   == step: [200/391], train loss: 1.137 | train acc: 59.141% | lr: 0.001000
+   == step: [300/391], train loss: 1.138 | train acc: 59.188% | lr: 0.001000
+   == step: [391/391], train loss: 1.138 | train acc: 59.264% | lr: 0.001000
+   == cost time: 4.8587s
+ === Validate ===
+   == test loss: 1.080 | test acc: 61.520%
+ === Epoch: [9/150] === 
+   == step: [100/391], train loss: 1.114 | train acc: 59.867% | lr: 0.001000
+   == step: [200/391], train loss: 1.114 | train acc: 59.953% | lr: 0.001000
+   == step: [300/391], train loss: 1.113 | train acc: 59.974% | lr: 0.001000
+   == step: [391/391], train loss: 1.110 | train acc: 60.204% | lr: 0.001000
+   == cost time: 4.8714s
+ === Epoch: [10/150] === 
+   == step: [100/391], train loss: 1.088 | train acc: 61.750% | lr: 0.001000
+   == step: [200/391], train loss: 1.090 | train acc: 61.168% | lr: 0.001000
+   == step: [300/391], train loss: 1.090 | train acc: 61.286% | lr: 0.001000
+   == step: [391/391], train loss: 1.093 | train acc: 61.136% | lr: 0.001000
+   == cost time: 4.8273s
+ === Validate ===
+   == test loss: 1.038 | test acc: 63.460%
+ === Epoch: [11/150] === 
+   == step: [100/391], train loss: 1.072 | train acc: 61.781% | lr: 0.001000
+   == step: [200/391], train loss: 1.067 | train acc: 61.902% | lr: 0.001000
+   == step: [300/391], train loss: 1.066 | train acc: 62.005% | lr: 0.001000
+   == step: [391/391], train loss: 1.064 | train acc: 62.072% | lr: 0.001000
+   == cost time: 4.8673s
+ === Epoch: [12/150] === 
+   == step: [100/391], train loss: 1.035 | train acc: 62.906% | lr: 0.001000
+   == step: [200/391], train loss: 1.039 | train acc: 63.105% | lr: 0.001000
+   == step: [300/391], train loss: 1.043 | train acc: 63.081% | lr: 0.001000
+   == step: [391/391], train loss: 1.048 | train acc: 62.840% | lr: 0.001000
+   == cost time: 4.8699s
+ === Validate ===
+   == test loss: 1.021 | test acc: 63.710%
+ === Epoch: [13/150] === 
+   == step: [100/391], train loss: 1.024 | train acc: 63.430% | lr: 0.001000
+   == step: [200/391], train loss: 1.028 | train acc: 63.238% | lr: 0.001000
+   == step: [300/391], train loss: 1.026 | train acc: 63.417% | lr: 0.001000
+   == step: [391/391], train loss: 1.028 | train acc: 63.228% | lr: 0.001000
+   == cost time: 4.8446s
+ === Epoch: [14/150] === 
+   == step: [100/391], train loss: 1.016 | train acc: 63.836% | lr: 0.001000
+   == step: [200/391], train loss: 1.021 | train acc: 63.766% | lr: 0.001000
+   == step: [300/391], train loss: 1.019 | train acc: 63.911% | lr: 0.001000
+   == step: [391/391], train loss: 1.015 | train acc: 64.052% | lr: 0.001000
+   == cost time: 4.7752s
+ === Validate ===
+   == test loss: 1.005 | test acc: 63.900%
+ === Epoch: [15/150] === 
+   == step: [100/391], train loss: 0.984 | train acc: 65.344% | lr: 0.001000
+   == step: [200/391], train loss: 0.990 | train acc: 64.859% | lr: 0.001000
+   == step: [300/391], train loss: 0.990 | train acc: 64.578% | lr: 0.001000
+   == step: [391/391], train loss: 0.997 | train acc: 64.358% | lr: 0.001000
+   == cost time: 4.8813s
+ === Epoch: [16/150] === 
+   == step: [100/391], train loss: 0.980 | train acc: 64.750% | lr: 0.001000
+   == step: [200/391], train loss: 0.981 | train acc: 65.039% | lr: 0.001000
+   == step: [300/391], train loss: 0.984 | train acc: 65.060% | lr: 0.001000
+   == step: [391/391], train loss: 0.986 | train acc: 64.864% | lr: 0.001000
+   == cost time: 4.7754s
+ === Validate ===
+   == test loss: 1.003 | test acc: 64.430%
+ === Epoch: [17/150] === 
+   == step: [100/391], train loss: 0.971 | train acc: 64.781% | lr: 0.001000
+   == step: [200/391], train loss: 0.977 | train acc: 64.773% | lr: 0.001000
+   == step: [300/391], train loss: 0.975 | train acc: 65.109% | lr: 0.001000
+   == step: [391/391], train loss: 0.980 | train acc: 65.000% | lr: 0.001000
+   == cost time: 4.8193s
+ === Epoch: [18/150] === 
+   == step: [100/391], train loss: 0.938 | train acc: 66.664% | lr: 0.001000
+   == step: [200/391], train loss: 0.953 | train acc: 66.004% | lr: 0.001000
+   == step: [300/391], train loss: 0.964 | train acc: 65.669% | lr: 0.001000
+   == step: [391/391], train loss: 0.962 | train acc: 65.644% | lr: 0.001000
+   == cost time: 4.8441s
+ === Validate ===
+   == test loss: 0.959 | test acc: 66.150%
+ === Epoch: [19/150] === 
+   == step: [100/391], train loss: 0.934 | train acc: 66.625% | lr: 0.001000
+   == step: [200/391], train loss: 0.946 | train acc: 66.078% | lr: 0.001000
+   == step: [300/391], train loss: 0.952 | train acc: 65.893% | lr: 0.001000
+   == step: [391/391], train loss: 0.950 | train acc: 66.016% | lr: 0.001000
+   == cost time: 4.8887s
+ === Epoch: [20/150] === 
+   == step: [100/391], train loss: 0.947 | train acc: 66.422% | lr: 0.001000
+   == step: [200/391], train loss: 0.946 | train acc: 66.109% | lr: 0.001000
+   == step: [300/391], train loss: 0.947 | train acc: 66.091% | lr: 0.001000
+   == step: [391/391], train loss: 0.944 | train acc: 66.198% | lr: 0.001000
+   == cost time: 4.7101s
+ === Validate ===
+   == test loss: 0.962 | test acc: 65.500%
+ === Epoch: [21/150] === 
+   == step: [100/391], train loss: 0.927 | train acc: 66.891% | lr: 0.001000
+   == step: [200/391], train loss: 0.941 | train acc: 66.508% | lr: 0.001000
+   == step: [300/391], train loss: 0.939 | train acc: 66.440% | lr: 0.001000
+   == step: [391/391], train loss: 0.936 | train acc: 66.634% | lr: 0.001000
+   == cost time: 4.7246s
+ === Epoch: [22/150] === 
+   == step: [100/391], train loss: 0.910 | train acc: 67.836% | lr: 0.001000
+   == step: [200/391], train loss: 0.910 | train acc: 67.590% | lr: 0.001000
+   == step: [300/391], train loss: 0.917 | train acc: 67.344% | lr: 0.001000
+   == step: [391/391], train loss: 0.920 | train acc: 67.240% | lr: 0.001000
+   == cost time: 4.8670s
+ === Validate ===
+   == test loss: 0.977 | test acc: 66.030%
+ === Epoch: [23/150] === 
+   == step: [100/391], train loss: 0.912 | train acc: 67.531% | lr: 0.001000
+   == step: [200/391], train loss: 0.915 | train acc: 67.375% | lr: 0.001000
+   == step: [300/391], train loss: 0.920 | train acc: 67.336% | lr: 0.001000
+   == step: [391/391], train loss: 0.917 | train acc: 67.440% | lr: 0.001000
+   == cost time: 4.8046s
+ === Epoch: [24/150] === 
+   == step: [100/391], train loss: 0.900 | train acc: 68.086% | lr: 0.001000
+   == step: [200/391], train loss: 0.903 | train acc: 68.055% | lr: 0.001000
+   == step: [300/391], train loss: 0.905 | train acc: 67.927% | lr: 0.001000
+   == step: [391/391], train loss: 0.906 | train acc: 67.900% | lr: 0.001000
+   == cost time: 4.8123s
+ === Validate ===
+   == test loss: 0.931 | test acc: 67.380%
+ === Epoch: [25/150] === 
+   == step: [100/391], train loss: 0.901 | train acc: 68.102% | lr: 0.001000
+   == step: [200/391], train loss: 0.897 | train acc: 68.281% | lr: 0.001000
+   == step: [300/391], train loss: 0.899 | train acc: 68.208% | lr: 0.001000
+   == step: [391/391], train loss: 0.895 | train acc: 68.294% | lr: 0.001000
+   == cost time: 4.7418s
+ === Epoch: [26/150] === 
+   == step: [100/391], train loss: 0.887 | train acc: 68.562% | lr: 0.001000
+   == step: [200/391], train loss: 0.880 | train acc: 68.898% | lr: 0.001000
+   == step: [300/391], train loss: 0.884 | train acc: 68.667% | lr: 0.001000
+   == step: [391/391], train loss: 0.887 | train acc: 68.572% | lr: 0.001000
+   == cost time: 4.7263s
+ === Validate ===
+   == test loss: 0.926 | test acc: 67.440%
+ === Epoch: [27/150] === 
+   == step: [100/391], train loss: 0.877 | train acc: 68.570% | lr: 0.001000
+   == step: [200/391], train loss: 0.870 | train acc: 68.953% | lr: 0.001000
+   == step: [300/391], train loss: 0.877 | train acc: 68.721% | lr: 0.001000
+   == step: [391/391], train loss: 0.877 | train acc: 68.580% | lr: 0.001000
+   == cost time: 4.8039s
+ === Epoch: [28/150] === 
+   == step: [100/391], train loss: 0.871 | train acc: 69.039% | lr: 0.001000
+   == step: [200/391], train loss: 0.865 | train acc: 69.508% | lr: 0.001000
+   == step: [300/391], train loss: 0.868 | train acc: 69.263% | lr: 0.001000
+   == step: [391/391], train loss: 0.870 | train acc: 69.052% | lr: 0.001000
+   == cost time: 4.8361s
+ === Validate ===
+   == test loss: 0.922 | test acc: 67.400%
+ === Epoch: [29/150] === 
+   == step: [100/391], train loss: 0.865 | train acc: 69.336% | lr: 0.001000
+   == step: [200/391], train loss: 0.861 | train acc: 69.328% | lr: 0.001000
+   == step: [300/391], train loss: 0.863 | train acc: 69.104% | lr: 0.001000
+   == step: [391/391], train loss: 0.866 | train acc: 68.966% | lr: 0.001000
+   == cost time: 4.7496s
+ === Epoch: [30/150] === 
+   == step: [100/391], train loss: 0.861 | train acc: 69.062% | lr: 0.001000
+   == step: [200/391], train loss: 0.866 | train acc: 69.211% | lr: 0.001000
+   == step: [300/391], train loss: 0.863 | train acc: 69.380% | lr: 0.001000
+   == step: [391/391], train loss: 0.864 | train acc: 69.346% | lr: 0.001000
+   == cost time: 4.8694s
+ === Validate ===
+   == test loss: 0.921 | test acc: 67.980%
+ === Epoch: [31/150] === 
+   == step: [100/391], train loss: 0.864 | train acc: 69.445% | lr: 0.001000
+   == step: [200/391], train loss: 0.857 | train acc: 69.637% | lr: 0.001000
+   == step: [300/391], train loss: 0.860 | train acc: 69.409% | lr: 0.001000
+   == step: [391/391], train loss: 0.857 | train acc: 69.560% | lr: 0.001000
+   == cost time: 4.8754s
+ === Epoch: [32/150] === 
+   == step: [100/391], train loss: 0.858 | train acc: 69.305% | lr: 0.001000
+   == step: [200/391], train loss: 0.849 | train acc: 69.730% | lr: 0.001000
+   == step: [300/391], train loss: 0.852 | train acc: 69.539% | lr: 0.001000
+   == step: [391/391], train loss: 0.851 | train acc: 69.538% | lr: 0.001000
+   == cost time: 4.7956s
+ === Validate ===
+   == test loss: 0.906 | test acc: 68.560%
+ === Epoch: [33/150] === 
+   == step: [100/391], train loss: 0.852 | train acc: 69.555% | lr: 0.001000
+   == step: [200/391], train loss: 0.845 | train acc: 69.918% | lr: 0.001000
+   == step: [300/391], train loss: 0.843 | train acc: 70.005% | lr: 0.001000
+   == step: [391/391], train loss: 0.844 | train acc: 69.930% | lr: 0.001000
+   == cost time: 4.7629s
+ === Epoch: [34/150] === 
+   == step: [100/391], train loss: 0.815 | train acc: 70.875% | lr: 0.001000
+   == step: [200/391], train loss: 0.832 | train acc: 70.402% | lr: 0.001000
+   == step: [300/391], train loss: 0.834 | train acc: 70.201% | lr: 0.001000
+   == step: [391/391], train loss: 0.837 | train acc: 70.084% | lr: 0.001000
+   == cost time: 4.9861s
+ === Validate ===
+   == test loss: 0.924 | test acc: 67.530%
+ === Epoch: [35/150] === 
+   == step: [100/391], train loss: 0.837 | train acc: 70.102% | lr: 0.001000
+   == step: [200/391], train loss: 0.832 | train acc: 70.234% | lr: 0.001000
+   == step: [300/391], train loss: 0.826 | train acc: 70.393% | lr: 0.001000
+   == step: [391/391], train loss: 0.830 | train acc: 70.320% | lr: 0.001000
+   == cost time: 4.8239s
+ === Epoch: [36/150] === 
+   == step: [100/391], train loss: 0.817 | train acc: 70.773% | lr: 0.001000
+   == step: [200/391], train loss: 0.825 | train acc: 70.344% | lr: 0.001000
+   == step: [300/391], train loss: 0.825 | train acc: 70.625% | lr: 0.001000
+   == step: [391/391], train loss: 0.827 | train acc: 70.576% | lr: 0.001000
+   == cost time: 4.8621s
+ === Validate ===
+   == test loss: 0.911 | test acc: 68.710%
+ === Epoch: [37/150] === 
+   == step: [100/391], train loss: 0.812 | train acc: 70.773% | lr: 0.001000
+   == step: [200/391], train loss: 0.819 | train acc: 70.594% | lr: 0.001000
+   == step: [300/391], train loss: 0.824 | train acc: 70.583% | lr: 0.001000
+   == step: [391/391], train loss: 0.824 | train acc: 70.532% | lr: 0.001000
+   == cost time: 4.8081s
+ === Epoch: [38/150] === 
+   == step: [100/391], train loss: 0.820 | train acc: 70.930% | lr: 0.001000
+   == step: [200/391], train loss: 0.816 | train acc: 70.891% | lr: 0.001000
+   == step: [300/391], train loss: 0.817 | train acc: 70.802% | lr: 0.001000
+   == step: [391/391], train loss: 0.819 | train acc: 70.756% | lr: 0.001000
+   == cost time: 4.7590s
+ === Validate ===
+   == test loss: 0.883 | test acc: 69.730%
+ === Epoch: [39/150] === 
+   == step: [100/391], train loss: 0.791 | train acc: 71.664% | lr: 0.001000
+   == step: [200/391], train loss: 0.803 | train acc: 71.348% | lr: 0.001000
+   == step: [300/391], train loss: 0.805 | train acc: 71.185% | lr: 0.001000
+   == step: [391/391], train loss: 0.811 | train acc: 71.024% | lr: 0.001000
+   == cost time: 4.8428s
+ === Epoch: [40/150] === 
+   == step: [100/391], train loss: 0.790 | train acc: 71.797% | lr: 0.001000
+   == step: [200/391], train loss: 0.793 | train acc: 71.734% | lr: 0.001000
+   == step: [300/391], train loss: 0.803 | train acc: 71.305% | lr: 0.001000
+   == step: [391/391], train loss: 0.804 | train acc: 71.284% | lr: 0.001000
+   == cost time: 4.7922s
+ === Validate ===
+   == test loss: 0.898 | test acc: 68.710%
+ === Epoch: [41/150] === 
+   == step: [100/391], train loss: 0.796 | train acc: 71.977% | lr: 0.001000
+   == step: [200/391], train loss: 0.801 | train acc: 71.711% | lr: 0.001000
+   == step: [300/391], train loss: 0.802 | train acc: 71.586% | lr: 0.001000
+   == step: [391/391], train loss: 0.803 | train acc: 71.492% | lr: 0.001000
+   == cost time: 4.7272s
+ === Epoch: [42/150] === 
+   == step: [100/391], train loss: 0.788 | train acc: 71.758% | lr: 0.001000
+   == step: [200/391], train loss: 0.794 | train acc: 71.680% | lr: 0.001000
+   == step: [300/391], train loss: 0.796 | train acc: 71.516% | lr: 0.001000
+   == step: [391/391], train loss: 0.795 | train acc: 71.500% | lr: 0.001000
+   == cost time: 5.0886s
+ === Validate ===
+   == test loss: 0.894 | test acc: 69.440%
+ === Epoch: [43/150] === 
+   == step: [100/391], train loss: 0.791 | train acc: 71.523% | lr: 0.001000
+   == step: [200/391], train loss: 0.793 | train acc: 71.656% | lr: 0.001000
+   == step: [300/391], train loss: 0.792 | train acc: 71.750% | lr: 0.001000
+   == step: [391/391], train loss: 0.796 | train acc: 71.542% | lr: 0.001000
+   == cost time: 4.8476s
+ === Epoch: [44/150] === 
+   == step: [100/391], train loss: 0.764 | train acc: 72.539% | lr: 0.001000
+   == step: [200/391], train loss: 0.781 | train acc: 71.773% | lr: 0.001000
+   == step: [300/391], train loss: 0.783 | train acc: 71.768% | lr: 0.001000
+   == step: [391/391], train loss: 0.789 | train acc: 71.630% | lr: 0.001000
+   == cost time: 4.9363s
+ === Validate ===
+   == test loss: 0.882 | test acc: 69.580%
+ === Epoch: [45/150] === 
+   == step: [100/391], train loss: 0.778 | train acc: 72.195% | lr: 0.001000
+   == step: [200/391], train loss: 0.776 | train acc: 72.023% | lr: 0.001000
+   == step: [300/391], train loss: 0.782 | train acc: 71.898% | lr: 0.001000
+   == step: [391/391], train loss: 0.785 | train acc: 71.834% | lr: 0.001000
+   == cost time: 4.8676s
+ === Epoch: [46/150] === 
+   == step: [100/391], train loss: 0.770 | train acc: 72.516% | lr: 0.001000
+   == step: [200/391], train loss: 0.771 | train acc: 72.391% | lr: 0.001000
+   == step: [300/391], train loss: 0.773 | train acc: 72.523% | lr: 0.001000
+   == step: [391/391], train loss: 0.775 | train acc: 72.476% | lr: 0.001000
+   == cost time: 4.8173s
+ === Validate ===
+   == test loss: 0.882 | test acc: 69.990%
+ === Epoch: [47/150] === 
+   == step: [100/391], train loss: 0.759 | train acc: 73.016% | lr: 0.001000
+   == step: [200/391], train loss: 0.771 | train acc: 72.277% | lr: 0.001000
+   == step: [300/391], train loss: 0.777 | train acc: 72.326% | lr: 0.001000
+   == step: [391/391], train loss: 0.778 | train acc: 72.210% | lr: 0.001000
+   == cost time: 4.7516s
+ === Epoch: [48/150] === 
+   == step: [100/391], train loss: 0.771 | train acc: 72.297% | lr: 0.001000
+   == step: [200/391], train loss: 0.772 | train acc: 72.207% | lr: 0.001000
+   == step: [300/391], train loss: 0.773 | train acc: 72.292% | lr: 0.001000
+   == step: [391/391], train loss: 0.774 | train acc: 72.228% | lr: 0.001000
+   == cost time: 4.8808s
+ === Validate ===
+   == test loss: 0.890 | test acc: 69.260%
+ === Epoch: [49/150] === 
+   == step: [100/391], train loss: 0.767 | train acc: 72.039% | lr: 0.001000
+   == step: [200/391], train loss: 0.769 | train acc: 72.480% | lr: 0.001000
+   == step: [300/391], train loss: 0.771 | train acc: 72.411% | lr: 0.001000
+   == step: [391/391], train loss: 0.776 | train acc: 72.194% | lr: 0.001000
+   == cost time: 4.8701s
+ === Epoch: [50/150] === 
+   == step: [100/391], train loss: 0.762 | train acc: 72.477% | lr: 0.001000
+   == step: [200/391], train loss: 0.774 | train acc: 72.164% | lr: 0.001000
+   == step: [300/391], train loss: 0.773 | train acc: 72.250% | lr: 0.001000
+   == step: [391/391], train loss: 0.767 | train acc: 72.534% | lr: 0.001000
+   == cost time: 4.8415s
+ === Validate ===
+   == test loss: 0.903 | test acc: 69.520%
+ === Epoch: [51/150] === 
+   == step: [100/391], train loss: 0.752 | train acc: 73.445% | lr: 0.001000
+   == step: [200/391], train loss: 0.755 | train acc: 73.117% | lr: 0.001000
+   == step: [300/391], train loss: 0.759 | train acc: 72.914% | lr: 0.001000
+   == step: [391/391], train loss: 0.764 | train acc: 72.814% | lr: 0.001000
+   == cost time: 4.8295s
+ === Epoch: [52/150] === 
+   == step: [100/391], train loss: 0.739 | train acc: 73.141% | lr: 0.001000
+   == step: [200/391], train loss: 0.747 | train acc: 73.020% | lr: 0.001000
+   == step: [300/391], train loss: 0.751 | train acc: 72.982% | lr: 0.001000
+   == step: [391/391], train loss: 0.756 | train acc: 72.902% | lr: 0.001000
+   == cost time: 4.6936s
+ === Validate ===
+   == test loss: 0.871 | test acc: 69.780%
+ === Epoch: [53/150] === 
+   == step: [100/391], train loss: 0.745 | train acc: 73.078% | lr: 0.001000
+   == step: [200/391], train loss: 0.755 | train acc: 72.930% | lr: 0.001000
+   == step: [300/391], train loss: 0.751 | train acc: 73.242% | lr: 0.001000
+   == step: [391/391], train loss: 0.755 | train acc: 73.068% | lr: 0.001000
+   == cost time: 4.7271s
+ === Epoch: [54/150] === 
+   == step: [100/391], train loss: 0.741 | train acc: 73.508% | lr: 0.001000
+   == step: [200/391], train loss: 0.754 | train acc: 72.945% | lr: 0.001000
+   == step: [300/391], train loss: 0.750 | train acc: 73.083% | lr: 0.001000
+   == step: [391/391], train loss: 0.755 | train acc: 72.960% | lr: 0.001000
+   == cost time: 4.9240s
+ === Validate ===
+   == test loss: 0.887 | test acc: 69.810%
+ === Epoch: [55/150] === 
+   == step: [100/391], train loss: 0.730 | train acc: 73.617% | lr: 0.001000
+   == step: [200/391], train loss: 0.738 | train acc: 73.391% | lr: 0.001000
+   == step: [300/391], train loss: 0.742 | train acc: 73.406% | lr: 0.001000
+   == step: [391/391], train loss: 0.746 | train acc: 73.262% | lr: 0.001000
+   == cost time: 4.8033s
+ === Epoch: [56/150] === 
+   == step: [100/391], train loss: 0.736 | train acc: 73.609% | lr: 0.001000
+   == step: [200/391], train loss: 0.736 | train acc: 73.668% | lr: 0.001000
+   == step: [300/391], train loss: 0.742 | train acc: 73.641% | lr: 0.001000
+   == step: [391/391], train loss: 0.746 | train acc: 73.420% | lr: 0.001000
+   == cost time: 4.7837s
+ === Validate ===
+   == test loss: 0.879 | test acc: 69.460%
+ === Epoch: [57/150] === 
+   == step: [100/391], train loss: 0.713 | train acc: 74.102% | lr: 0.001000
+   == step: [200/391], train loss: 0.726 | train acc: 73.691% | lr: 0.001000
+   == step: [300/391], train loss: 0.729 | train acc: 73.747% | lr: 0.001000
+   == step: [391/391], train loss: 0.738 | train acc: 73.512% | lr: 0.001000
+   == cost time: 4.7331s
+ === Epoch: [58/150] === 
+   == step: [100/391], train loss: 0.715 | train acc: 74.383% | lr: 0.001000
+   == step: [200/391], train loss: 0.728 | train acc: 73.973% | lr: 0.001000
+   == step: [300/391], train loss: 0.732 | train acc: 73.734% | lr: 0.001000
+   == step: [391/391], train loss: 0.737 | train acc: 73.552% | lr: 0.001000
+   == cost time: 4.7689s
+ === Validate ===
+   == test loss: 0.887 | test acc: 69.340%
+ === Epoch: [59/150] === 
+   == step: [100/391], train loss: 0.744 | train acc: 73.242% | lr: 0.001000
+   == step: [200/391], train loss: 0.728 | train acc: 73.750% | lr: 0.001000
+   == step: [300/391], train loss: 0.728 | train acc: 73.768% | lr: 0.001000
+   == step: [391/391], train loss: 0.732 | train acc: 73.660% | lr: 0.001000
+   == cost time: 4.9873s
+ === Epoch: [60/150] === 
+   == step: [100/391], train loss: 0.708 | train acc: 74.578% | lr: 0.001000
+   == step: [200/391], train loss: 0.725 | train acc: 74.066% | lr: 0.001000
+   == step: [300/391], train loss: 0.727 | train acc: 74.099% | lr: 0.001000
+   == step: [391/391], train loss: 0.730 | train acc: 73.916% | lr: 0.001000
+   == cost time: 4.8044s
+ === Validate ===
+   == test loss: 0.906 | test acc: 69.480%
+ === Epoch: [61/150] === 
+   == step: [100/391], train loss: 0.715 | train acc: 74.062% | lr: 0.001000
+   == step: [200/391], train loss: 0.726 | train acc: 73.918% | lr: 0.001000
+   == step: [300/391], train loss: 0.731 | train acc: 73.904% | lr: 0.001000
+   == step: [391/391], train loss: 0.730 | train acc: 73.880% | lr: 0.001000
+   == cost time: 5.0327s
+ === Epoch: [62/150] === 
+   == step: [100/391], train loss: 0.720 | train acc: 73.828% | lr: 0.001000
+   == step: [200/391], train loss: 0.717 | train acc: 74.152% | lr: 0.001000
+   == step: [300/391], train loss: 0.721 | train acc: 73.966% | lr: 0.001000
+   == step: [391/391], train loss: 0.724 | train acc: 73.850% | lr: 0.001000
+   == cost time: 4.8413s
+ === Validate ===
+   == test loss: 0.872 | test acc: 70.280%
+ === Epoch: [63/150] === 
+   == step: [100/391], train loss: 0.712 | train acc: 74.492% | lr: 0.001000
+   == step: [200/391], train loss: 0.710 | train acc: 74.625% | lr: 0.001000
+   == step: [300/391], train loss: 0.717 | train acc: 74.365% | lr: 0.001000
+   == step: [391/391], train loss: 0.719 | train acc: 74.256% | lr: 0.001000
+   == cost time: 4.7610s
+ === Epoch: [64/150] === 
+   == step: [100/391], train loss: 0.692 | train acc: 75.188% | lr: 0.001000
+   == step: [200/391], train loss: 0.698 | train acc: 74.863% | lr: 0.001000
+   == step: [300/391], train loss: 0.708 | train acc: 74.487% | lr: 0.001000
+   == step: [391/391], train loss: 0.712 | train acc: 74.378% | lr: 0.001000
+   == cost time: 4.8109s
+ === Validate ===
+   == test loss: 0.906 | test acc: 69.410%
+ === Epoch: [65/150] === 
+   == step: [100/391], train loss: 0.705 | train acc: 74.781% | lr: 0.001000
+   == step: [200/391], train loss: 0.713 | train acc: 74.531% | lr: 0.001000
+   == step: [300/391], train loss: 0.712 | train acc: 74.560% | lr: 0.001000
+   == step: [391/391], train loss: 0.718 | train acc: 74.372% | lr: 0.001000
+   == cost time: 4.9590s
+ === Epoch: [66/150] === 
+   == step: [100/391], train loss: 0.682 | train acc: 75.445% | lr: 0.001000
+   == step: [200/391], train loss: 0.701 | train acc: 74.965% | lr: 0.001000
+   == step: [300/391], train loss: 0.704 | train acc: 74.810% | lr: 0.001000
+   == step: [391/391], train loss: 0.711 | train acc: 74.538% | lr: 0.001000
+   == cost time: 4.8663s
+ === Validate ===
+   == test loss: 0.901 | test acc: 69.600%
+ === Epoch: [67/150] === 
+   == step: [100/391], train loss: 0.692 | train acc: 75.266% | lr: 0.001000
+   == step: [200/391], train loss: 0.698 | train acc: 75.160% | lr: 0.001000
+   == step: [300/391], train loss: 0.707 | train acc: 74.906% | lr: 0.001000
+   == step: [391/391], train loss: 0.711 | train acc: 74.710% | lr: 0.001000
+   == cost time: 4.7823s
+ === Epoch: [68/150] === 
+   == step: [100/391], train loss: 0.680 | train acc: 75.602% | lr: 0.001000
+   == step: [200/391], train loss: 0.691 | train acc: 75.145% | lr: 0.001000
+   == step: [300/391], train loss: 0.698 | train acc: 74.964% | lr: 0.001000
+   == step: [391/391], train loss: 0.701 | train acc: 74.946% | lr: 0.001000
+   == cost time: 4.7290s
+ === Validate ===
+   == test loss: 0.907 | test acc: 69.080%
+ === Epoch: [69/150] === 
+   == step: [100/391], train loss: 0.672 | train acc: 76.047% | lr: 0.001000
+   == step: [200/391], train loss: 0.689 | train acc: 75.445% | lr: 0.001000
+   == step: [300/391], train loss: 0.703 | train acc: 74.846% | lr: 0.001000
+   == step: [391/391], train loss: 0.705 | train acc: 74.740% | lr: 0.001000
+   == cost time: 4.9497s
+ === Epoch: [70/150] === 
+   == step: [100/391], train loss: 0.683 | train acc: 75.453% | lr: 0.001000
+   == step: [200/391], train loss: 0.686 | train acc: 75.504% | lr: 0.001000
+   == step: [300/391], train loss: 0.696 | train acc: 75.133% | lr: 0.001000
+   == step: [391/391], train loss: 0.700 | train acc: 74.990% | lr: 0.001000
+   == cost time: 4.8833s
+ === Validate ===
+   == test loss: 0.874 | test acc: 70.330%
+ === Epoch: [71/150] === 
+   == step: [100/391], train loss: 0.683 | train acc: 75.398% | lr: 0.001000
+   == step: [200/391], train loss: 0.693 | train acc: 75.090% | lr: 0.001000
+   == step: [300/391], train loss: 0.698 | train acc: 75.003% | lr: 0.001000
+   == step: [391/391], train loss: 0.704 | train acc: 74.706% | lr: 0.001000
+   == cost time: 4.7318s
+ === Epoch: [72/150] === 
+   == step: [100/391], train loss: 0.684 | train acc: 75.578% | lr: 0.001000
+   == step: [200/391], train loss: 0.687 | train acc: 75.320% | lr: 0.001000
+   == step: [300/391], train loss: 0.697 | train acc: 74.747% | lr: 0.001000
+   == step: [391/391], train loss: 0.699 | train acc: 74.650% | lr: 0.001000
+   == cost time: 4.6746s
+ === Validate ===
+   == test loss: 0.901 | test acc: 70.120%
+ === Epoch: [73/150] === 
+   == step: [100/391], train loss: 0.693 | train acc: 74.969% | lr: 0.001000
+   == step: [200/391], train loss: 0.685 | train acc: 75.152% | lr: 0.001000
+   == step: [300/391], train loss: 0.689 | train acc: 75.013% | lr: 0.001000
+   == step: [391/391], train loss: 0.691 | train acc: 75.110% | lr: 0.001000
+   == cost time: 4.7289s
+ === Epoch: [74/150] === 
+   == step: [100/391], train loss: 0.682 | train acc: 75.469% | lr: 0.001000
+   == step: [200/391], train loss: 0.689 | train acc: 75.180% | lr: 0.001000
+   == step: [300/391], train loss: 0.695 | train acc: 74.958% | lr: 0.001000
+   == step: [391/391], train loss: 0.695 | train acc: 75.014% | lr: 0.001000
+   == cost time: 4.7900s
+ === Validate ===
+   == test loss: 0.904 | test acc: 69.630%
+ === Epoch: [75/150] === 
+   == step: [100/391], train loss: 0.664 | train acc: 76.234% | lr: 0.001000
+   == step: [200/391], train loss: 0.680 | train acc: 75.613% | lr: 0.001000
+   == step: [300/391], train loss: 0.687 | train acc: 75.477% | lr: 0.001000
+   == step: [391/391], train loss: 0.688 | train acc: 75.412% | lr: 0.001000
+   == cost time: 4.9328s
+ === Epoch: [76/150] === 
+   == step: [100/391], train loss: 0.672 | train acc: 75.414% | lr: 0.001000
+   == step: [200/391], train loss: 0.677 | train acc: 75.328% | lr: 0.001000
+   == step: [300/391], train loss: 0.682 | train acc: 75.164% | lr: 0.001000
+   == step: [391/391], train loss: 0.688 | train acc: 75.100% | lr: 0.001000
+   == cost time: 4.8989s
+ === Validate ===
+   == test loss: 0.904 | test acc: 69.470%
+ === Epoch: [77/150] === 
+   == step: [100/391], train loss: 0.671 | train acc: 76.000% | lr: 0.001000
+   == step: [200/391], train loss: 0.680 | train acc: 75.684% | lr: 0.001000
+   == step: [300/391], train loss: 0.681 | train acc: 75.578% | lr: 0.001000
+   == step: [391/391], train loss: 0.685 | train acc: 75.404% | lr: 0.001000
+   == cost time: 4.9189s
+ === Epoch: [78/150] === 
+   == step: [100/391], train loss: 0.662 | train acc: 76.102% | lr: 0.001000
+   == step: [200/391], train loss: 0.679 | train acc: 75.527% | lr: 0.001000
+   == step: [300/391], train loss: 0.683 | train acc: 75.487% | lr: 0.001000
+   == step: [391/391], train loss: 0.688 | train acc: 75.206% | lr: 0.001000
+   == cost time: 4.8892s
+ === Validate ===
+   == test loss: 0.880 | test acc: 70.360%
+ === Epoch: [79/150] === 
+   == step: [100/391], train loss: 0.669 | train acc: 75.953% | lr: 0.001000
+   == step: [200/391], train loss: 0.677 | train acc: 75.770% | lr: 0.001000
+   == step: [300/391], train loss: 0.679 | train acc: 75.669% | lr: 0.001000
+   == step: [391/391], train loss: 0.682 | train acc: 75.582% | lr: 0.001000
+   == cost time: 4.9503s
+ === Epoch: [80/150] === 
+   == step: [100/391], train loss: 0.665 | train acc: 75.867% | lr: 0.001000
+   == step: [200/391], train loss: 0.671 | train acc: 75.590% | lr: 0.001000
+   == step: [300/391], train loss: 0.676 | train acc: 75.578% | lr: 0.001000
+   == step: [391/391], train loss: 0.678 | train acc: 75.482% | lr: 0.001000
+   == cost time: 4.6612s
+ === Validate ===
+   == test loss: 0.912 | test acc: 69.570%
+ === Epoch: [81/150] === 
+   == step: [100/391], train loss: 0.658 | train acc: 76.477% | lr: 0.001000
+   == step: [200/391], train loss: 0.663 | train acc: 76.285% | lr: 0.001000
+   == step: [300/391], train loss: 0.668 | train acc: 76.031% | lr: 0.001000
+   == step: [391/391], train loss: 0.672 | train acc: 75.882% | lr: 0.001000
+   == cost time: 4.7560s
+ === Epoch: [82/150] === 
+   == step: [100/391], train loss: 0.666 | train acc: 75.867% | lr: 0.001000
+   == step: [200/391], train loss: 0.671 | train acc: 75.879% | lr: 0.001000
+   == step: [300/391], train loss: 0.668 | train acc: 75.940% | lr: 0.001000
+   == step: [391/391], train loss: 0.672 | train acc: 75.792% | lr: 0.001000
+   == cost time: 4.8538s
+ === Validate ===
+   == test loss: 0.883 | test acc: 70.330%
+ === Epoch: [83/150] === 
+   == step: [100/391], train loss: 0.654 | train acc: 76.234% | lr: 0.001000
+   == step: [200/391], train loss: 0.663 | train acc: 75.934% | lr: 0.001000
+   == step: [300/391], train loss: 0.667 | train acc: 75.971% | lr: 0.001000
+   == step: [391/391], train loss: 0.670 | train acc: 75.820% | lr: 0.001000
+   == cost time: 4.8151s
+ === Epoch: [84/150] === 
+   == step: [100/391], train loss: 0.642 | train acc: 76.516% | lr: 0.001000
+   == step: [200/391], train loss: 0.661 | train acc: 76.039% | lr: 0.001000
+   == step: [300/391], train loss: 0.666 | train acc: 75.885% | lr: 0.001000
+   == step: [391/391], train loss: 0.667 | train acc: 76.048% | lr: 0.001000
+   == cost time: 4.7468s
+ === Validate ===
+   == test loss: 0.888 | test acc: 70.470%
+ === Epoch: [85/150] === 
+   == step: [100/391], train loss: 0.648 | train acc: 76.742% | lr: 0.001000
+   == step: [200/391], train loss: 0.661 | train acc: 76.406% | lr: 0.001000
+   == step: [300/391], train loss: 0.659 | train acc: 76.456% | lr: 0.001000
+   == step: [391/391], train loss: 0.666 | train acc: 76.208% | lr: 0.001000
+   == cost time: 4.6647s
+ === Epoch: [86/150] === 
+   == step: [100/391], train loss: 0.658 | train acc: 76.367% | lr: 0.001000
+   == step: [200/391], train loss: 0.660 | train acc: 76.207% | lr: 0.001000
+   == step: [300/391], train loss: 0.665 | train acc: 76.062% | lr: 0.001000
+   == step: [391/391], train loss: 0.664 | train acc: 76.120% | lr: 0.001000
+   == cost time: 4.7695s
+ === Validate ===
+   == test loss: 0.903 | test acc: 69.500%
+ === Epoch: [87/150] === 
+   == step: [100/391], train loss: 0.646 | train acc: 77.203% | lr: 0.001000
+   == step: [200/391], train loss: 0.656 | train acc: 76.570% | lr: 0.001000
+   == step: [300/391], train loss: 0.659 | train acc: 76.398% | lr: 0.001000
+   == step: [391/391], train loss: 0.664 | train acc: 76.264% | lr: 0.001000
+   == cost time: 4.6680s
+ === Epoch: [88/150] === 
+   == step: [100/391], train loss: 0.652 | train acc: 76.523% | lr: 0.001000
+   == step: [200/391], train loss: 0.655 | train acc: 76.379% | lr: 0.001000
+   == step: [300/391], train loss: 0.663 | train acc: 76.141% | lr: 0.001000
+   == step: [391/391], train loss: 0.664 | train acc: 76.092% | lr: 0.001000
+   == cost time: 4.7291s
+ === Validate ===
+   == test loss: 0.885 | test acc: 70.160%
+ === Epoch: [89/150] === 
+   == step: [100/391], train loss: 0.646 | train acc: 76.633% | lr: 0.001000
+   == step: [200/391], train loss: 0.647 | train acc: 76.520% | lr: 0.001000
+   == step: [300/391], train loss: 0.649 | train acc: 76.479% | lr: 0.001000
+   == step: [391/391], train loss: 0.657 | train acc: 76.332% | lr: 0.001000
+   == cost time: 4.9214s
+ === Epoch: [90/150] === 
+   == step: [100/391], train loss: 0.653 | train acc: 76.531% | lr: 0.001000
+   == step: [200/391], train loss: 0.653 | train acc: 76.379% | lr: 0.001000
+   == step: [300/391], train loss: 0.657 | train acc: 76.398% | lr: 0.001000
+   == step: [391/391], train loss: 0.653 | train acc: 76.558% | lr: 0.001000
+   == cost time: 4.7517s
+ === Validate ===
+   == test loss: 0.887 | test acc: 70.490%
+ === Epoch: [91/150] === 
+   == step: [100/391], train loss: 0.652 | train acc: 76.828% | lr: 0.001000
+   == step: [200/391], train loss: 0.652 | train acc: 76.707% | lr: 0.001000
+   == step: [300/391], train loss: 0.653 | train acc: 76.674% | lr: 0.001000
+   == step: [391/391], train loss: 0.658 | train acc: 76.524% | lr: 0.001000
+   == cost time: 4.7363s
+ === Epoch: [92/150] === 
+   == step: [100/391], train loss: 0.636 | train acc: 77.227% | lr: 0.001000
+   == step: [200/391], train loss: 0.638 | train acc: 77.312% | lr: 0.001000
+   == step: [300/391], train loss: 0.646 | train acc: 77.036% | lr: 0.001000
+   == step: [391/391], train loss: 0.649 | train acc: 76.962% | lr: 0.001000
+   == cost time: 4.7415s
+ === Validate ===
+   == test loss: 0.903 | test acc: 69.800%
+ === Epoch: [93/150] === 
+   == step: [100/391], train loss: 0.640 | train acc: 77.188% | lr: 0.001000
+   == step: [200/391], train loss: 0.650 | train acc: 76.684% | lr: 0.001000
+   == step: [300/391], train loss: 0.650 | train acc: 76.698% | lr: 0.001000
+   == step: [391/391], train loss: 0.654 | train acc: 76.564% | lr: 0.001000
+   == cost time: 4.7509s
+ === Epoch: [94/150] === 
+   == step: [100/391], train loss: 0.620 | train acc: 77.789% | lr: 0.001000
+   == step: [200/391], train loss: 0.629 | train acc: 77.516% | lr: 0.001000
+   == step: [300/391], train loss: 0.637 | train acc: 77.263% | lr: 0.001000
+   == step: [391/391], train loss: 0.640 | train acc: 77.096% | lr: 0.001000
+   == cost time: 4.6890s
+ === Validate ===
+   == test loss: 0.917 | test acc: 69.810%
+ === Epoch: [95/150] === 
+   == step: [100/391], train loss: 0.633 | train acc: 77.258% | lr: 0.001000
+   == step: [200/391], train loss: 0.633 | train acc: 77.270% | lr: 0.001000
+   == step: [300/391], train loss: 0.636 | train acc: 77.227% | lr: 0.001000
+   == step: [391/391], train loss: 0.642 | train acc: 76.926% | lr: 0.001000
+   == cost time: 4.8527s
+ === Epoch: [96/150] === 
+   == step: [100/391], train loss: 0.627 | train acc: 77.281% | lr: 0.001000
+   == step: [200/391], train loss: 0.632 | train acc: 77.395% | lr: 0.001000
+   == step: [300/391], train loss: 0.637 | train acc: 77.214% | lr: 0.001000
+   == step: [391/391], train loss: 0.639 | train acc: 77.066% | lr: 0.001000
+   == cost time: 4.7911s
+ === Validate ===
+   == test loss: 0.911 | test acc: 69.800%
+ === Epoch: [97/150] === 
+   == step: [100/391], train loss: 0.627 | train acc: 77.750% | lr: 0.001000
+   == step: [200/391], train loss: 0.631 | train acc: 77.488% | lr: 0.001000
+   == step: [300/391], train loss: 0.636 | train acc: 77.396% | lr: 0.001000
+   == step: [391/391], train loss: 0.640 | train acc: 77.210% | lr: 0.001000
+   == cost time: 4.7902s
+ === Epoch: [98/150] === 
+   == step: [100/391], train loss: 0.619 | train acc: 78.016% | lr: 0.001000
+   == step: [200/391], train loss: 0.630 | train acc: 77.410% | lr: 0.001000
+   == step: [300/391], train loss: 0.632 | train acc: 77.349% | lr: 0.001000
+   == step: [391/391], train loss: 0.639 | train acc: 77.092% | lr: 0.001000
+   == cost time: 4.7353s
+ === Validate ===
+   == test loss: 0.922 | test acc: 69.670%
+ === Epoch: [99/150] === 
+   == step: [100/391], train loss: 0.618 | train acc: 77.875% | lr: 0.001000
+   == step: [200/391], train loss: 0.626 | train acc: 77.531% | lr: 0.001000
+   == step: [300/391], train loss: 0.631 | train acc: 77.143% | lr: 0.001000
+   == step: [391/391], train loss: 0.637 | train acc: 77.000% | lr: 0.001000
+   == cost time: 4.7269s
+ === Epoch: [100/150] === 
+   == step: [100/391], train loss: 0.615 | train acc: 77.859% | lr: 0.001000
+   == step: [200/391], train loss: 0.626 | train acc: 77.527% | lr: 0.001000
+   == step: [300/391], train loss: 0.630 | train acc: 77.297% | lr: 0.001000
+   == step: [391/391], train loss: 0.636 | train acc: 77.084% | lr: 0.001000
+   == cost time: 4.7518s
+ === Validate ===
+   == test loss: 0.918 | test acc: 70.410%
+ === Epoch: [101/150] === 
+   == step: [100/391], train loss: 0.567 | train acc: 79.859% | lr: 0.000100
+   == step: [200/391], train loss: 0.556 | train acc: 80.156% | lr: 0.000100
+   == step: [300/391], train loss: 0.554 | train acc: 80.185% | lr: 0.000100
+   == step: [391/391], train loss: 0.546 | train acc: 80.488% | lr: 0.000100
+   == cost time: 4.7298s
+ === Epoch: [102/150] === 
+   == step: [100/391], train loss: 0.512 | train acc: 81.508% | lr: 0.000100
+   == step: [200/391], train loss: 0.514 | train acc: 81.383% | lr: 0.000100
+   == step: [300/391], train loss: 0.516 | train acc: 81.341% | lr: 0.000100
+   == step: [391/391], train loss: 0.512 | train acc: 81.562% | lr: 0.000100
+   == cost time: 4.7015s
+ === Validate ===
+   == test loss: 0.879 | test acc: 72.000%
+ === Epoch: [103/150] === 
+   == step: [100/391], train loss: 0.487 | train acc: 82.438% | lr: 0.000100
+   == step: [200/391], train loss: 0.490 | train acc: 82.410% | lr: 0.000100
+   == step: [300/391], train loss: 0.496 | train acc: 82.164% | lr: 0.000100
+   == step: [391/391], train loss: 0.496 | train acc: 82.176% | lr: 0.000100
+   == cost time: 4.7901s
+ === Epoch: [104/150] === 
+   == step: [100/391], train loss: 0.481 | train acc: 82.859% | lr: 0.000100
+   == step: [200/391], train loss: 0.485 | train acc: 82.535% | lr: 0.000100
+   == step: [300/391], train loss: 0.490 | train acc: 82.443% | lr: 0.000100
+   == step: [391/391], train loss: 0.491 | train acc: 82.506% | lr: 0.000100
+   == cost time: 4.8831s
+ === Validate ===
+   == test loss: 0.887 | test acc: 72.080%
+ === Epoch: [105/150] === 
+   == step: [100/391], train loss: 0.480 | train acc: 82.930% | lr: 0.000100
+   == step: [200/391], train loss: 0.477 | train acc: 82.906% | lr: 0.000100
+   == step: [300/391], train loss: 0.480 | train acc: 82.753% | lr: 0.000100
+   == step: [391/391], train loss: 0.481 | train acc: 82.728% | lr: 0.000100
+   == cost time: 4.9721s
+ === Epoch: [106/150] === 
+   == step: [100/391], train loss: 0.474 | train acc: 82.695% | lr: 0.000100
+   == step: [200/391], train loss: 0.468 | train acc: 83.172% | lr: 0.000100
+   == step: [300/391], train loss: 0.465 | train acc: 83.294% | lr: 0.000100
+   == step: [391/391], train loss: 0.469 | train acc: 83.186% | lr: 0.000100
+   == cost time: 4.9544s
+ === Validate ===
+   == test loss: 0.898 | test acc: 71.950%
+ === Epoch: [107/150] === 
+   == step: [100/391], train loss: 0.467 | train acc: 82.961% | lr: 0.000100
+   == step: [200/391], train loss: 0.466 | train acc: 83.238% | lr: 0.000100
+   == step: [300/391], train loss: 0.469 | train acc: 83.086% | lr: 0.000100
+   == step: [391/391], train loss: 0.468 | train acc: 83.090% | lr: 0.000100
+   == cost time: 4.6841s
+ === Epoch: [108/150] === 
+   == step: [100/391], train loss: 0.472 | train acc: 82.977% | lr: 0.000100
+   == step: [200/391], train loss: 0.464 | train acc: 83.340% | lr: 0.000100
+   == step: [300/391], train loss: 0.463 | train acc: 83.346% | lr: 0.000100
+   == step: [391/391], train loss: 0.463 | train acc: 83.354% | lr: 0.000100
+   == cost time: 4.6917s
+ === Validate ===
+   == test loss: 0.906 | test acc: 72.050%
+ === Epoch: [109/150] === 
+   == step: [100/391], train loss: 0.455 | train acc: 83.352% | lr: 0.000100
+   == step: [200/391], train loss: 0.451 | train acc: 83.691% | lr: 0.000100
+   == step: [300/391], train loss: 0.453 | train acc: 83.711% | lr: 0.000100
+   == step: [391/391], train loss: 0.452 | train acc: 83.798% | lr: 0.000100
+   == cost time: 4.7225s
+ === Epoch: [110/150] === 
+   == step: [100/391], train loss: 0.447 | train acc: 83.453% | lr: 0.000100
+   == step: [200/391], train loss: 0.453 | train acc: 83.301% | lr: 0.000100
+   == step: [300/391], train loss: 0.452 | train acc: 83.456% | lr: 0.000100
+   == step: [391/391], train loss: 0.456 | train acc: 83.362% | lr: 0.000100
+   == cost time: 4.7545s
+ === Validate ===
+   == test loss: 0.913 | test acc: 71.910%
+ === Epoch: [111/150] === 
+   == step: [100/391], train loss: 0.439 | train acc: 84.109% | lr: 0.000100
+   == step: [200/391], train loss: 0.448 | train acc: 83.848% | lr: 0.000100
+   == step: [300/391], train loss: 0.452 | train acc: 83.664% | lr: 0.000100
+   == step: [391/391], train loss: 0.448 | train acc: 83.790% | lr: 0.000100
+   == cost time: 4.6624s
+ === Epoch: [112/150] === 
+   == step: [100/391], train loss: 0.437 | train acc: 84.297% | lr: 0.000100
+   == step: [200/391], train loss: 0.443 | train acc: 84.012% | lr: 0.000100
+   == step: [300/391], train loss: 0.444 | train acc: 83.932% | lr: 0.000100
+   == step: [391/391], train loss: 0.444 | train acc: 83.854% | lr: 0.000100
+   == cost time: 4.6812s
+ === Validate ===
+   == test loss: 0.918 | test acc: 71.880%
+ === Epoch: [113/150] === 
+   == step: [100/391], train loss: 0.436 | train acc: 84.188% | lr: 0.000100
+   == step: [200/391], train loss: 0.441 | train acc: 84.086% | lr: 0.000100
+   == step: [300/391], train loss: 0.441 | train acc: 84.026% | lr: 0.000100
+   == step: [391/391], train loss: 0.441 | train acc: 83.998% | lr: 0.000100
+   == cost time: 4.6793s
+ === Epoch: [114/150] === 
+   == step: [100/391], train loss: 0.429 | train acc: 84.438% | lr: 0.000100
+   == step: [200/391], train loss: 0.435 | train acc: 84.348% | lr: 0.000100
+   == step: [300/391], train loss: 0.436 | train acc: 84.156% | lr: 0.000100
+   == step: [391/391], train loss: 0.437 | train acc: 84.138% | lr: 0.000100
+   == cost time: 4.6662s
+ === Validate ===
+   == test loss: 0.925 | test acc: 71.520%
+ === Epoch: [115/150] === 
+   == step: [100/391], train loss: 0.429 | train acc: 84.633% | lr: 0.000100
+   == step: [200/391], train loss: 0.440 | train acc: 84.027% | lr: 0.000100
+   == step: [300/391], train loss: 0.437 | train acc: 84.148% | lr: 0.000100
+   == step: [391/391], train loss: 0.436 | train acc: 84.208% | lr: 0.000100
+   == cost time: 4.6826s
+ === Epoch: [116/150] === 
+   == step: [100/391], train loss: 0.433 | train acc: 84.375% | lr: 0.000100
+   == step: [200/391], train loss: 0.437 | train acc: 84.168% | lr: 0.000100
+   == step: [300/391], train loss: 0.432 | train acc: 84.357% | lr: 0.000100
+   == step: [391/391], train loss: 0.432 | train acc: 84.312% | lr: 0.000100
+   == cost time: 4.6910s
+ === Validate ===
+   == test loss: 0.928 | test acc: 71.890%
+ === Epoch: [117/150] === 
+   == step: [100/391], train loss: 0.432 | train acc: 84.492% | lr: 0.000100
+   == step: [200/391], train loss: 0.432 | train acc: 84.445% | lr: 0.000100
+   == step: [300/391], train loss: 0.430 | train acc: 84.490% | lr: 0.000100
+   == step: [391/391], train loss: 0.430 | train acc: 84.520% | lr: 0.000100
+   == cost time: 4.7055s
+ === Epoch: [118/150] === 
+   == step: [100/391], train loss: 0.428 | train acc: 84.367% | lr: 0.000100
+   == step: [200/391], train loss: 0.426 | train acc: 84.430% | lr: 0.000100
+   == step: [300/391], train loss: 0.425 | train acc: 84.471% | lr: 0.000100
+   == step: [391/391], train loss: 0.426 | train acc: 84.506% | lr: 0.000100
+   == cost time: 4.7217s
+ === Validate ===
+   == test loss: 0.937 | test acc: 71.800%
+ === Epoch: [119/150] === 
+   == step: [100/391], train loss: 0.398 | train acc: 85.859% | lr: 0.000100
+   == step: [200/391], train loss: 0.412 | train acc: 85.188% | lr: 0.000100
+   == step: [300/391], train loss: 0.414 | train acc: 85.156% | lr: 0.000100
+   == step: [391/391], train loss: 0.421 | train acc: 84.926% | lr: 0.000100
+   == cost time: 4.8716s
+ === Epoch: [120/150] === 
+   == step: [100/391], train loss: 0.407 | train acc: 85.586% | lr: 0.000100
+   == step: [200/391], train loss: 0.415 | train acc: 85.062% | lr: 0.000100
+   == step: [300/391], train loss: 0.421 | train acc: 84.815% | lr: 0.000100
+   == step: [391/391], train loss: 0.417 | train acc: 84.992% | lr: 0.000100
+   == cost time: 4.8078s
+ === Validate ===
+   == test loss: 0.947 | test acc: 71.570%
+ === Epoch: [121/150] === 
+   == step: [100/391], train loss: 0.410 | train acc: 85.148% | lr: 0.000100
+   == step: [200/391], train loss: 0.411 | train acc: 85.145% | lr: 0.000100
+   == step: [300/391], train loss: 0.413 | train acc: 84.930% | lr: 0.000100
+   == step: [391/391], train loss: 0.415 | train acc: 84.888% | lr: 0.000100
+   == cost time: 5.0035s
+ === Epoch: [122/150] === 
+   == step: [100/391], train loss: 0.401 | train acc: 85.641% | lr: 0.000100
+   == step: [200/391], train loss: 0.412 | train acc: 85.238% | lr: 0.000100
+   == step: [300/391], train loss: 0.412 | train acc: 85.221% | lr: 0.000100
+   == step: [391/391], train loss: 0.412 | train acc: 85.212% | lr: 0.000100
+   == cost time: 5.0696s
+ === Validate ===
+   == test loss: 0.937 | test acc: 71.690%
+ === Epoch: [123/150] === 
+   == step: [100/391], train loss: 0.411 | train acc: 85.164% | lr: 0.000100
+   == step: [200/391], train loss: 0.414 | train acc: 84.961% | lr: 0.000100
+   == step: [300/391], train loss: 0.410 | train acc: 85.068% | lr: 0.000100
+   == step: [391/391], train loss: 0.413 | train acc: 85.104% | lr: 0.000100
+   == cost time: 4.9019s
+ === Epoch: [124/150] === 
+   == step: [100/391], train loss: 0.402 | train acc: 85.648% | lr: 0.000100
+   == step: [200/391], train loss: 0.405 | train acc: 85.395% | lr: 0.000100
+   == step: [300/391], train loss: 0.409 | train acc: 85.385% | lr: 0.000100
+   == step: [391/391], train loss: 0.412 | train acc: 85.322% | lr: 0.000100
+   == cost time: 4.8394s
+ === Validate ===
+   == test loss: 0.951 | test acc: 71.770%
+ === Epoch: [125/150] === 
+   == step: [100/391], train loss: 0.418 | train acc: 84.969% | lr: 0.000100
+   == step: [200/391], train loss: 0.414 | train acc: 85.168% | lr: 0.000100
+   == step: [300/391], train loss: 0.414 | train acc: 85.107% | lr: 0.000100
+   == step: [391/391], train loss: 0.410 | train acc: 85.236% | lr: 0.000100
+   == cost time: 4.7732s
+ === Epoch: [126/150] === 
+   == step: [100/391], train loss: 0.396 | train acc: 85.758% | lr: 0.000100
+   == step: [200/391], train loss: 0.398 | train acc: 85.672% | lr: 0.000100
+   == step: [300/391], train loss: 0.397 | train acc: 85.594% | lr: 0.000100
+   == step: [391/391], train loss: 0.398 | train acc: 85.574% | lr: 0.000100
+   == cost time: 4.7796s
+ === Validate ===
+   == test loss: 0.955 | test acc: 71.600%
+ === Epoch: [127/150] === 
+   == step: [100/391], train loss: 0.396 | train acc: 85.516% | lr: 0.000100
+   == step: [200/391], train loss: 0.402 | train acc: 85.395% | lr: 0.000100
+   == step: [300/391], train loss: 0.403 | train acc: 85.409% | lr: 0.000100
+   == step: [391/391], train loss: 0.404 | train acc: 85.318% | lr: 0.000100
+   == cost time: 4.8358s
+ === Epoch: [128/150] === 
+   == step: [100/391], train loss: 0.390 | train acc: 85.898% | lr: 0.000100
+   == step: [200/391], train loss: 0.391 | train acc: 85.766% | lr: 0.000100
+   == step: [300/391], train loss: 0.395 | train acc: 85.703% | lr: 0.000100
+   == step: [391/391], train loss: 0.397 | train acc: 85.610% | lr: 0.000100
+   == cost time: 4.8153s
+ === Validate ===
+   == test loss: 0.958 | test acc: 71.910%
+ === Epoch: [129/150] === 
+   == step: [100/391], train loss: 0.401 | train acc: 85.391% | lr: 0.000100
+   == step: [200/391], train loss: 0.399 | train acc: 85.473% | lr: 0.000100
+   == step: [300/391], train loss: 0.399 | train acc: 85.487% | lr: 0.000100
+   == step: [391/391], train loss: 0.398 | train acc: 85.498% | lr: 0.000100
+   == cost time: 4.8277s
+ === Epoch: [130/150] === 
+   == step: [100/391], train loss: 0.385 | train acc: 86.180% | lr: 0.000100
+   == step: [200/391], train loss: 0.388 | train acc: 86.078% | lr: 0.000100
+   == step: [300/391], train loss: 0.389 | train acc: 86.005% | lr: 0.000100
+   == step: [391/391], train loss: 0.392 | train acc: 85.914% | lr: 0.000100
+   == cost time: 4.8734s
+ === Validate ===
+   == test loss: 0.965 | test acc: 71.520%
+ === Epoch: [131/150] === 
+   == step: [100/391], train loss: 0.387 | train acc: 86.086% | lr: 0.000100
+   == step: [200/391], train loss: 0.391 | train acc: 85.828% | lr: 0.000100
+   == step: [300/391], train loss: 0.390 | train acc: 85.901% | lr: 0.000100
+   == step: [391/391], train loss: 0.390 | train acc: 85.844% | lr: 0.000100
+   == cost time: 4.6665s
+ === Epoch: [132/150] === 
+   == step: [100/391], train loss: 0.398 | train acc: 85.641% | lr: 0.000100
+   == step: [200/391], train loss: 0.391 | train acc: 85.961% | lr: 0.000100
+   == step: [300/391], train loss: 0.391 | train acc: 85.911% | lr: 0.000100
+   == step: [391/391], train loss: 0.393 | train acc: 85.844% | lr: 0.000100
+   == cost time: 4.7121s
+ === Validate ===
+   == test loss: 0.973 | test acc: 71.620%
+ === Epoch: [133/150] === 
+   == step: [100/391], train loss: 0.387 | train acc: 86.008% | lr: 0.000100
+   == step: [200/391], train loss: 0.387 | train acc: 86.039% | lr: 0.000100
+   == step: [300/391], train loss: 0.390 | train acc: 85.867% | lr: 0.000100
+   == step: [391/391], train loss: 0.391 | train acc: 85.868% | lr: 0.000100
+   == cost time: 4.8364s
+ === Epoch: [134/150] === 
+   == step: [100/391], train loss: 0.372 | train acc: 86.195% | lr: 0.000100
+   == step: [200/391], train loss: 0.371 | train acc: 86.543% | lr: 0.000100
+   == step: [300/391], train loss: 0.376 | train acc: 86.422% | lr: 0.000100
+   == step: [391/391], train loss: 0.379 | train acc: 86.372% | lr: 0.000100
+   == cost time: 4.6536s
+ === Validate ===
+   == test loss: 0.968 | test acc: 71.700%
+ === Epoch: [135/150] === 
+   == step: [100/391], train loss: 0.381 | train acc: 86.266% | lr: 0.000100
+   == step: [200/391], train loss: 0.384 | train acc: 86.113% | lr: 0.000100
+   == step: [300/391], train loss: 0.382 | train acc: 86.234% | lr: 0.000100
+   == step: [391/391], train loss: 0.381 | train acc: 86.308% | lr: 0.000100
+   == cost time: 4.7505s
+ === Epoch: [136/150] === 
+   == step: [100/391], train loss: 0.367 | train acc: 86.914% | lr: 0.000100
+   == step: [200/391], train loss: 0.375 | train acc: 86.500% | lr: 0.000100
+   == step: [300/391], train loss: 0.376 | train acc: 86.505% | lr: 0.000100
+   == step: [391/391], train loss: 0.377 | train acc: 86.410% | lr: 0.000100
+   == cost time: 4.7959s
+ === Validate ===
+   == test loss: 0.987 | test acc: 71.440%
+ === Epoch: [137/150] === 
+   == step: [100/391], train loss: 0.373 | train acc: 86.742% | lr: 0.000100
+   == step: [200/391], train loss: 0.374 | train acc: 86.719% | lr: 0.000100
+   == step: [300/391], train loss: 0.375 | train acc: 86.589% | lr: 0.000100
+   == step: [391/391], train loss: 0.377 | train acc: 86.514% | lr: 0.000100
+   == cost time: 4.8441s
+ === Epoch: [138/150] === 
+   == step: [100/391], train loss: 0.373 | train acc: 86.453% | lr: 0.000100
+   == step: [200/391], train loss: 0.379 | train acc: 86.164% | lr: 0.000100
+   == step: [300/391], train loss: 0.377 | train acc: 86.326% | lr: 0.000100
+   == step: [391/391], train loss: 0.376 | train acc: 86.324% | lr: 0.000100
+   == cost time: 4.8241s
+ === Validate ===
+   == test loss: 0.988 | test acc: 71.440%
+ === Epoch: [139/150] === 
+   == step: [100/391], train loss: 0.361 | train acc: 86.875% | lr: 0.000100
+   == step: [200/391], train loss: 0.368 | train acc: 86.727% | lr: 0.000100
+   == step: [300/391], train loss: 0.371 | train acc: 86.656% | lr: 0.000100
+   == step: [391/391], train loss: 0.374 | train acc: 86.486% | lr: 0.000100
+   == cost time: 4.8114s
+ === Epoch: [140/150] === 
+   == step: [100/391], train loss: 0.369 | train acc: 86.594% | lr: 0.000100
+   == step: [200/391], train loss: 0.371 | train acc: 86.543% | lr: 0.000100
+   == step: [300/391], train loss: 0.369 | train acc: 86.661% | lr: 0.000100
+   == step: [391/391], train loss: 0.369 | train acc: 86.630% | lr: 0.000100
+   == cost time: 4.7777s
+ === Validate ===
+   == test loss: 0.999 | test acc: 71.130%
+ === Epoch: [141/150] === 
+   == step: [100/391], train loss: 0.374 | train acc: 86.484% | lr: 0.000100
+   == step: [200/391], train loss: 0.372 | train acc: 86.672% | lr: 0.000100
+   == step: [300/391], train loss: 0.369 | train acc: 86.753% | lr: 0.000100
+   == step: [391/391], train loss: 0.369 | train acc: 86.830% | lr: 0.000100
+   == cost time: 4.9088s
+ === Epoch: [142/150] === 
+   == step: [100/391], train loss: 0.358 | train acc: 87.062% | lr: 0.000100
+   == step: [200/391], train loss: 0.362 | train acc: 86.996% | lr: 0.000100
+   == step: [300/391], train loss: 0.366 | train acc: 86.807% | lr: 0.000100
+   == step: [391/391], train loss: 0.366 | train acc: 86.776% | lr: 0.000100
+   == cost time: 4.8538s
+ === Validate ===
+   == test loss: 0.994 | test acc: 71.340%
+ === Epoch: [143/150] === 
+   == step: [100/391], train loss: 0.360 | train acc: 87.258% | lr: 0.000100
+   == step: [200/391], train loss: 0.360 | train acc: 87.273% | lr: 0.000100
+   == step: [300/391], train loss: 0.360 | train acc: 87.161% | lr: 0.000100
+   == step: [391/391], train loss: 0.360 | train acc: 87.116% | lr: 0.000100
+   == cost time: 4.7904s
+ === Epoch: [144/150] === 
+   == step: [100/391], train loss: 0.363 | train acc: 86.883% | lr: 0.000100
+   == step: [200/391], train loss: 0.359 | train acc: 87.027% | lr: 0.000100
+   == step: [300/391], train loss: 0.361 | train acc: 86.878% | lr: 0.000100
+   == step: [391/391], train loss: 0.361 | train acc: 86.944% | lr: 0.000100
+   == cost time: 4.8904s
+ === Validate ===
+   == test loss: 1.012 | test acc: 71.610%
+ === Epoch: [145/150] === 
+   == step: [100/391], train loss: 0.355 | train acc: 87.055% | lr: 0.000100
+   == step: [200/391], train loss: 0.352 | train acc: 87.109% | lr: 0.000100
+   == step: [300/391], train loss: 0.354 | train acc: 87.068% | lr: 0.000100
+   == step: [391/391], train loss: 0.356 | train acc: 87.010% | lr: 0.000100
+   == cost time: 4.6898s
+ === Epoch: [146/150] === 
+   == step: [100/391], train loss: 0.346 | train acc: 87.305% | lr: 0.000100
+   == step: [200/391], train loss: 0.351 | train acc: 87.316% | lr: 0.000100
+   == step: [300/391], train loss: 0.354 | train acc: 87.172% | lr: 0.000100
+   == step: [391/391], train loss: 0.354 | train acc: 87.224% | lr: 0.000100
+   == cost time: 4.6733s
+ === Validate ===
+   == test loss: 1.013 | test acc: 71.680%
+ === Epoch: [147/150] === 
+   == step: [100/391], train loss: 0.346 | train acc: 87.539% | lr: 0.000100
+   == step: [200/391], train loss: 0.351 | train acc: 87.434% | lr: 0.000100
+   == step: [300/391], train loss: 0.350 | train acc: 87.461% | lr: 0.000100
+   == step: [391/391], train loss: 0.351 | train acc: 87.306% | lr: 0.000100
+   == cost time: 4.6640s
+ === Epoch: [148/150] === 
+   == step: [100/391], train loss: 0.335 | train acc: 87.688% | lr: 0.000100
+   == step: [200/391], train loss: 0.341 | train acc: 87.527% | lr: 0.000100
+   == step: [300/391], train loss: 0.348 | train acc: 87.375% | lr: 0.000100
+   == step: [391/391], train loss: 0.349 | train acc: 87.368% | lr: 0.000100
+   == cost time: 4.6817s
+ === Validate ===
+   == test loss: 1.023 | test acc: 71.120%
+ === Epoch: [149/150] === 
+   == step: [100/391], train loss: 0.357 | train acc: 87.094% | lr: 0.000100
+   == step: [200/391], train loss: 0.353 | train acc: 87.316% | lr: 0.000100
+   == step: [300/391], train loss: 0.351 | train acc: 87.424% | lr: 0.000100
+   == step: [391/391], train loss: 0.350 | train acc: 87.476% | lr: 0.000100
+   == cost time: 4.6917s
+ === Epoch: [150/150] === 
+   == step: [100/391], train loss: 0.341 | train acc: 87.633% | lr: 0.000100
+   == step: [200/391], train loss: 0.347 | train acc: 87.457% | lr: 0.000100
+   == step: [300/391], train loss: 0.347 | train acc: 87.474% | lr: 0.000100
+   == step: [391/391], train loss: 0.348 | train acc: 87.454% | lr: 0.000100
+   == cost time: 4.7032s
+ === Validate ===
+   == test loss: 1.021 | test acc: 71.040%
+======== Training Finished.   best_test_acc: 72.080% ========

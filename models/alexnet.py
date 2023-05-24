@@ -5,32 +5,32 @@ __all__ = ["alexnet"]
 
 
 class AlexNet(nn.Module):
-    def __init__(self, kernel_sizes, strides, paddings, num_classes):
+    def __init__(self, kernel_sizes, strides, paddings, channels, num_classes):
         super(AlexNet, self).__init__()
         self.layer_1 = nn.Sequential(
-            nn.Conv2d(3, 64, kernel_size=kernel_sizes[0], stride=strides[0], padding=paddings[0]),
+            nn.Conv2d(3, channels[0], kernel_size=kernel_sizes[0], stride=strides[0], padding=paddings[0]),
             nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=2, stride=2)
             )
         self.layer_2 = nn.Sequential(
-            nn.Conv2d(64, 192, kernel_size=kernel_sizes[1], stride=strides[1], padding=paddings[1]),
+            nn.Conv2d(channels[0], channels[1], kernel_size=kernel_sizes[1], stride=strides[1], padding=paddings[1]),
             nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=2, stride=2)
             )
         self.layer_3 = nn.Sequential(
-            nn.Conv2d(192, 384, kernel_size=kernel_sizes[2], stride=strides[2], padding=paddings[2]),
+            nn.Conv2d(channels[1], channels[2], kernel_size=kernel_sizes[2], stride=strides[2], padding=paddings[2]),
             nn.ReLU(inplace=True)
             )
         self.layer_4 = nn.Sequential(
-            nn.Conv2d(384, 256, kernel_size=kernel_sizes[3], stride=strides[3], padding=paddings[3]),
+            nn.Conv2d(channels[2], channels[3], kernel_size=kernel_sizes[3], stride=strides[3], padding=paddings[3]),
             nn.ReLU(inplace=True)
             )
         self.layer_5 = nn.Sequential(
-            nn.Conv2d(256, 256, kernel_size=kernel_sizes[4], stride=strides[4], padding=paddings[4]),
+            nn.Conv2d(channels[3], channels[4], kernel_size=kernel_sizes[4], stride=strides[4], padding=paddings[4]),
             nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=2, stride=2),
         )
-        self.fc = nn.Linear(256, num_classes)
+        self.fc = nn.Linear(channels[4], num_classes)
 
     def forward(self, x):
         # print('input shape:', x.shape)
@@ -52,6 +52,8 @@ class AlexNet(nn.Module):
 
 def alexnet(num_classes, **kwargs):
 
+    channels = [64, 192, 384, 256, 256]
+
     if 'kernel_sizes' in kwargs:
         kernel_sizes_setting = kwargs['kernel_sizes']
         print('change kernel_sizes, using default strides')
@@ -60,6 +62,15 @@ def alexnet(num_classes, **kwargs):
         cfg = kernel_size_config(kernel_sizes_setting)
         kernel_sizes = cfg['kernel_sizes']
         paddings = cfg['paddings']
+
+    elif 'channels' in kwargs:
+        channels = kwargs['channels']
+        channels = [int(i) for i in channels.split('-')]
+        print('change channels, using default kernel_sizes and strides')
+        kernel_sizes = [11, 5, 3, 3, 3]
+        strides = [4, 1, 1, 1, 1]
+        paddings = [5, 2, 1, 1, 1]
+
     else:
         feature_size_setting = kwargs['feature_size']
         print('change feature_size, using default kernel_sizes')
@@ -71,7 +82,7 @@ def alexnet(num_classes, **kwargs):
         
     
     print('kernel_sizes:', kernel_sizes, 'strides:', strides, 'paddings:', paddings)
-    return AlexNet(kernel_sizes=kernel_sizes, strides=strides, paddings=paddings, num_classes=num_classes)
+    return AlexNet(kernel_sizes=kernel_sizes, strides=strides, paddings=paddings, channels=channels, num_classes=num_classes)
 
 
 def kernel_size_config(kernel_sizes_setting):
