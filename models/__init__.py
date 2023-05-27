@@ -27,3 +27,6 @@ def get_model_feature_size(config):
 
 def get_model_channels(config):
     return globals()[config.architecture](config.num_classes, channels=config.channels, input_size=config.input_size)
+
+def get_model_mnist(config):
+    return globals()[config.architecture](config.num_classes, mnist_cfg=config.mnist_cfg, input_size=config.input_size)

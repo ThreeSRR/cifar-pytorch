@@ -6,10 +6,12 @@ import os
 sns.set_theme()
 
 
-exps_dir = 'experiments/cifar10/0_kernel_size/alexnet'
+exps_dir = '/home/sr/code/cifar-pytorch/experiments/cifar10/3_channels/alexnet_sgd'
 model = os.path.basename(exps_dir)
 
-for exp in os.listdir(exps_dir):
+exps = os.listdir(exps_dir)
+
+for exp in exps:
     sub_dir = os.path.join(exps_dir, exp)
 
     train_losses = []
@@ -33,28 +35,18 @@ for exp in os.listdir(exps_dir):
         test_losses.append(val['loss'])
         test_accs.append(val['acc'])
 
-
+    ## Plot ACC
     plt.figure()
-    # plt.plot(train_losses, label='Training Loss')
-    # plt.plot(range(1, len(test_losses)*2, 2), test_losses, label='Test Loss')
-
     plt.plot(train_accs, label='Training ACC')
     plt.plot(range(1, len(test_accs)*2, 2), test_accs, label='Test ACC')
-
     plt.legend()
-    # plt.show()
-
     plt.savefig(os.path.join(sub_dir, '%s-%s-acc.png'%(model, exp)), dpi=300, bbox_inches='tight')
-
-
     plt.close()
 
-
+    ## Plot Loss
     plt.figure()
     plt.plot(train_losses, label='Training Loss')
     plt.plot(range(1, len(test_losses)*2, 2), test_losses, label='Test Loss')
-
     plt.legend()
-
     plt.savefig(os.path.join(sub_dir, '%s-%s-loss.png'%(model, exp)), dpi=300, bbox_inches='tight')
 

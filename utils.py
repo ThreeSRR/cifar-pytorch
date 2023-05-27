@@ -10,6 +10,9 @@ import torchvision
 import torchvision.transforms as transforms
 import medmnist
 
+from medmnist import INFO
+_medmnist_dataset = INFO.keys()
+
 
 class Cutout(object):
     def __init__(self, n_holes, length):
@@ -67,6 +70,11 @@ def count_parameters(model):
 
 def data_augmentation(config, is_train=True):
     aug = []
+
+    if config.dataset == "mnist" or config.dataset in _medmnist_dataset:
+        aug.append(transforms.Resize((config.input_size, config.input_size),  interpolation=transforms.InterpolationMode.BILINEAR))
+
+
     if is_train:
         # random crop
         if config.augmentation.random_crop:
@@ -86,13 +94,17 @@ def data_augmentation(config, is_train=True):
             )
         elif config.dataset == "mnist":
             aug.append(transforms.Normalize((0.1307,), (0.3081,)))
+        elif config.dataset in _medmnist_dataset:
+            aug.append(
+                transforms.Normalize(mean=[.5], std=[.5])
+            )
         else:
             aug.append(
                 transforms.Normalize((0.5071, 0.4867, 0.4408), (0.2675, 0.2565, 0.2761))
             )
     
     ### convert MNIST to RGB
-    if config.dataset == "mnist":
+    if config.dataset == "mnist" or (config.dataset in _medmnist_dataset and INFO[config.dataset]['n_channels'] == 1):
         aug.append(transforms.Lambda(lambda x: x.repeat(3, 1, 1)))
 
     if is_train and config.augmentation.cutout:
@@ -128,7 +140,7 @@ def load_checkpoint(path, model, optimizer=None):
 
 
 def get_data_loader(transform_train, transform_test, config):
-    assert config.dataset == "cifar10" or config.dataset == "cifar100" or config.dataset == "mnist"
+    assert config.dataset == "cifar10" or config.dataset == "cifar100" or config.dataset == "mnist" or config.dataset in _medmnist_dataset
     if config.dataset == "cifar10":
         trainset = torchvision.datasets.CIFAR10(
             root=config.data_path, train=True, download=True, transform=transform_train
@@ -153,6 +165,13 @@ def get_data_loader(transform_train, transform_test, config):
         testset = torchvision.datasets.MNIST(
             root=config.data_path, train=False, download=True, transform=transform_test
         )
+    elif config.dataset in _medmnist_dataset:
+        info = INFO[config.dataset]
+
+        DataClass = getattr(medmnist, info['python_class'])
+
+        trainset = DataClass(split='train', transform=transform_train, download=True)
+        testset = DataClass(split='test', transform=transform_test, download=True)
 
 
     train_loader = torch.utils.data.DataLoader(

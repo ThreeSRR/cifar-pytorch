@@ -71,7 +71,7 @@ def alexnet(num_classes, **kwargs):
         strides = [4, 1, 1, 1, 1]
         paddings = [5, 2, 1, 1, 1]
 
-    else:
+    elif 'feature_size' in kwargs:
         feature_size_setting = kwargs['feature_size']
         print('change feature_size, using default kernel_sizes')
         kernel_sizes = [11, 5, 3, 3, 3]
@@ -79,6 +79,24 @@ def alexnet(num_classes, **kwargs):
         cfg = feature_size_config(feature_size_setting)
         strides = cfg['strides']
         paddings = cfg['paddings']
+
+    else:
+        print('using default kernel_sizes, strides and paddings')
+        # kernel_sizes = [11, 5, 3, 3, 3]
+        # strides = [4, 1, 1, 1, 1]
+        # paddings = [5, 2, 1, 1, 1]
+
+        # kernel_sizes = [11, 5, 3, 3, 3]
+        # strides = [1, 1, 2, 1, 1]
+        # paddings = [6, 3, 2, 1, 1]
+
+        cfg_setting = kwargs['mnist_cfg']
+
+        cfg = mnist_cfg(cfg_setting)
+        kernel_sizes = cfg['kernel_sizes']
+        strides = cfg['strides']
+        paddings = cfg['paddings']
+        channels = cfg['channels']
         
     
     print('kernel_sizes:', kernel_sizes, 'strides:', strides, 'paddings:', paddings)
@@ -90,6 +108,10 @@ def kernel_size_config(kernel_sizes_setting):
         '11-5-3-3-3': {
             'kernel_sizes': [11, 5, 3, 3, 3],
             'paddings': [5, 2, 1, 1, 1]
+        },
+        '11-3-3-3-3': {
+            'kernel_sizes': [11, 3, 3, 3, 3],
+            'paddings': [5, 1, 1, 1, 1]
         },
         '7-5-3-3-3': {
             'kernel_sizes': [7, 5, 3, 3, 3],
@@ -114,6 +136,14 @@ def kernel_size_config(kernel_sizes_setting):
         '3-3-3-3-3': {
             'kernel_sizes': [3, 3, 3, 3, 3],
             'paddings': [1, 1, 1, 1, 1]
+        },
+        '5-5-5-5-5': {
+            'kernel_sizes': [5, 5, 5, 5, 5],
+            'paddings': [2, 2, 2, 2, 2]
+        },
+        '7-7-7-7-7': {
+            'kernel_sizes': [7, 7, 7, 7, 7],
+            'paddings': [3, 3, 3, 3, 3]
         },
         '7-7-5-3-3': {
             'kernel_sizes': [7, 7, 5, 3, 3],
@@ -190,3 +220,52 @@ def feature_size_config(feature_size_setting):
     }
 
     return cfg[feature_size_setting]
+
+
+def mnist_cfg(cfg_setting):
+    cfg = {
+        '1': {
+            'kernel_sizes': [7, 7, 5, 3, 3],
+            'paddings': [3, 3, 2, 1, 1],
+            'strides': [4, 1, 1, 1, 1], 
+            'channels': [64, 192, 384, 256, 256],
+        },
+        '2': {
+            'kernel_sizes': [11, 5, 3, 3, 3],
+            'paddings': [5, 2, 1, 1, 0],
+            'strides': [1, 1, 1, 2, 1], 
+            'channels': [64, 192, 384, 256, 256],
+        },
+        '3': {
+            'kernel_sizes': [11, 5, 3, 3, 3],
+            'paddings': [5, 2, 1, 1, 0],
+            'strides': [1, 1, 1, 2, 1], 
+            'channels': [384, 384, 256, 128, 64],
+        },
+        '4': {
+            'kernel_sizes': [7, 7, 5, 3, 3],
+            'paddings': [3, 3, 2, 1, 0],
+            'strides': [1, 1, 1, 2, 1],
+            'channels': [384, 384, 256, 128, 64],
+        },
+        '5': {
+            'kernel_sizes': [7, 7, 5, 3, 3],
+            'paddings': [3, 3, 2, 1, 0],
+            'strides': [1, 1, 1, 2, 1],
+            'channels': [64, 192, 384, 256, 256],
+        },
+        '6': {
+            'kernel_sizes': [7, 7, 5, 3, 3],
+            'paddings': [3, 3, 2, 1, 0],
+            'strides': [1, 1, 1, 2, 1],
+            'channels': [256, 256, 256, 256, 256],
+        },
+        '7': {
+            'kernel_sizes': [3, 3, 3, 3, 3],
+            'paddings': [1, 1, 1, 1, 1],
+            'strides': [4, 1, 1, 1, 1],
+            'channels': [64, 192, 384, 256, 256],
+        }
+    }
+
+    return cfg[cfg_setting]

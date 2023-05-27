@@ -197,20 +197,20 @@ def main():
 
 
     ### SGD
-    # optimizer = torch.optim.SGD(
-    #     net.parameters(),
-    #     config.lr_scheduler.base_lr,
-    #     momentum=config.optimize.momentum,
-    #     weight_decay=config.optimize.weight_decay,
-    #     nesterov=config.optimize.nesterov,
-    # )
+    optimizer = torch.optim.SGD(
+        net.parameters(),
+        config.lr_scheduler.base_lr*0.5,
+        momentum=config.optimize.momentum,
+        weight_decay=config.optimize.weight_decay,
+        nesterov=config.optimize.nesterov,
+    )
 
     ### Adam
-    optimizer = torch.optim.Adam(
-        net.parameters(),
-        config.lr_scheduler.base_lr,
-        weight_decay=config.optimize.weight_decay,
-    )
+    # optimizer = torch.optim.Adam(
+    #     net.parameters(),
+    #     config.lr_scheduler.base_lr,
+    #     weight_decay=config.optimize.weight_decay,
+    # )
 
     # resume from a checkpoint
     last_epoch = -1
